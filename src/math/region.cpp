@@ -125,6 +125,24 @@ float Region3D::depth() const
     return z_max - z_min;
 }
 
+bool Region3D::isInRegionNoZ(const Coord3D *point) const
+{
+    return x_min < point->x &&
+        point->x < x_max &&
+        y_min < point->y &&
+        point->y < y_max;
+}
+
+bool Region3D::isInRegionWithZ(const Coord3D *point) const
+{
+    return x_min < point->x &&
+        point->x < x_max &&
+        y_min < point->y &&
+        point->y < y_max &&
+        z_min < point->z &&
+        point->z < z_max;
+}
+
 void Region3D::zero()
 {
     ((unsigned int *)this)[0] = 0;

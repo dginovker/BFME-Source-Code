@@ -121,6 +121,8 @@ name,export_rva,target_rva,target_size,source,status,notes
 ?height@IRegion3D@@QBEHXZ,0x00005B5A,0x007E6F10,7,src/math/region.cpp,matched,returns integer height
 ?height@Region2D@@QBEMXZ,0x00035053,0x00160B30,7,src/math/region.cpp,matched,returns float height
 ?height@Region3D@@QBEMXZ,0x00039225,0x001066C0,7,src/math/region.cpp,matched,returns float height
+?isInRegionNoZ@Region3D@@QBE_NPBVCoord3D@@@Z,0x0001A1A4,0x000FBA20,66,src/math/region.cpp,matched,checks point inside x/y bounds
+?isInRegionWithZ@Region3D@@QBE_NPBVCoord3D@@@Z,0x000427D0,0x007E6E40,92,src/math/region.cpp,matched,checks point inside x/y/z bounds
 ?isInside@Region2D@@QBE_NABVCoord2D@@@Z,0x000457A5,0x0061BA90,66,src/math/region.cpp,matched,checks point inside region
 ?add@Coord3D@@QAEXPBUCoord3DBase@@@Z,0x00022688,0x000B6570,31,src/math/coord3d.cpp,matched,adds Coord3DBase pointer
 ?lengthSqr@Coord3D@@QBEMXZ,0x00020662,0x0014FF10,31,src/math/coord3d.cpp,matched,returns squared x/y/z length

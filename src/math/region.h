@@ -56,6 +56,8 @@ struct Region3D {
     float width() const;
     float height() const;
     float depth() const;
+    bool isInRegionNoZ(const Coord3D *point) const;
+    bool isInRegionWithZ(const Coord3D *point) const;
     void zero();
 
     float x_min;
