@@ -8,6 +8,8 @@ public:
 
     GameClientRandomVariable();
 
+    GameClientRandomVariable &operator=(const GameClientRandomVariable &that);
+
     DistributionType getDistributionType() const;
     float getMinimumValue() const;
     float getMaximumValue() const;

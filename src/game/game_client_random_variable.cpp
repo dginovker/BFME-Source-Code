@@ -7,6 +7,18 @@ GameClientRandomVariable::GameClientRandomVariable()
     maximum = 0.0f;
 }
 
+GameClientRandomVariable &GameClientRandomVariable::operator=(const GameClientRandomVariable &that)
+{
+    struct Raw {
+        unsigned int distribution;
+        float minimum;
+        float maximum;
+    };
+
+    *(Raw *)this = *(const Raw *)&that;
+    return *this;
+}
+
 GameClientRandomVariable::DistributionType GameClientRandomVariable::getDistributionType() const
 {
     return distribution;
