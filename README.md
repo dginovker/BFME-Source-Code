@@ -11,6 +11,10 @@ Goal: source code that rebuilds BFME 1's executable byte-for-byte.
 * Doing this piece by piece will eventually give you a full, open source recreation of BFME, and enable some (insane) mods
 * The goal of this project _is not_ to mod the game. The point of the project is to get source code that can be compiled into a 1:1, bit by bit replica of BFME 1's binary. This ensures 100% accuracy and will enable future (insane) modifications
 
+## Status
+
+We currently have C++ functions in `src/` and a patcher which can patch same-size custom functions into `lotrbfme.exe`. This is useful for modding.
+
 ## Baseline
 
 ```text
@@ -19,6 +23,12 @@ sha256: c1a907c44b84df129c1f18dc7365ea25ba438f9b8f39a374b86ed852936ff0a9
 ```
 
 ## Build
+
+Baseline executables and the MSVC 7.1 toolchain are stored with Git LFS. After cloning, run:
+
+```bash
+git lfs pull
+```
 
 ```bash
 ./build.sh
@@ -30,4 +40,4 @@ On Windows:
 .\build.ps1
 ```
 
-The build verifies the baseline and byte-compares tracked source against the original executable.
+The build verifies the baseline, byte-compares tracked source against the original executable, and checks that a no-op patched copy hashes identically.

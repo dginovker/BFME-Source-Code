@@ -15,6 +15,8 @@ MANIFEST = ROOT / "baselines" / "bfme1" / "workshop-vanilla-1.03" / "manifest.js
 EXE = ROOT / "baselines" / "bfme1" / "workshop-vanilla-1.03" / "files" / "lotrbfme.exe"
 FUNCTIONS = ROOT / "reverse" / "functions.csv"
 BUILD_DIR = ROOT / "build" / "match"
+PATCH_DIR = ROOT / "build" / "patch"
+NOOP_EXE = PATCH_DIR / "lotrbfme.noop.exe"
 DEFAULT_VC71_ROOT = (
     ROOT
     / "build"
@@ -228,35 +230,55 @@ def format_bytes(data):
     return " ".join(f"{byte:02x}" for byte in data)
 
 
-def verify_functions():
+def load_function_rows():
     with FUNCTIONS.open("r", encoding="utf-8", newline="") as handle:
-        rows = list(csv.DictReader(handle))
+        return list(csv.DictReader(handle))
+
+
+def compile_function(row):
+    source = ROOT / row["source"]
+    output = BUILD_DIR / (source.stem + ".obj")
+    output.parent.mkdir(parents=True, exist_ok=True)
+
+    command, env = compiler_command(source, output)
+    result = subprocess.run(
+        command,
+        cwd=ROOT,
+        env=env,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+    )
+    if result.returncode != 0:
+        print(result.stdout, end="")
+        raise SystemExit(result.returncode)
+
+    target_rva = int(row["target_rva"], 16)
+    target = read_target_bytes(target_rva, int(row["target_size"]))
+    compiled = read_object_symbol_bytes(output, row["name"])
+    return {
+        "name": row["name"],
+        "target_rva": target_rva,
+        "target": target,
+        "bytes": compiled,
+        "source": row["source"],
+    }
+
+
+def verify_functions():
+    rows = load_function_rows()
 
     print("Functions:")
     failures = 0
+    patches = []
     for row in rows:
-        source = ROOT / row["source"]
-        output = BUILD_DIR / (source.stem + ".obj")
-        output.parent.mkdir(parents=True, exist_ok=True)
-
-        command, env = compiler_command(source, output)
-        result = subprocess.run(
-            command,
-            cwd=ROOT,
-            env=env,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            text=True,
-        )
-        if result.returncode != 0:
-            print(result.stdout, end="")
-            raise SystemExit(result.returncode)
-
-        target = read_target_bytes(int(row["target_rva"], 16), int(row["target_size"]))
-        compiled = read_object_symbol_bytes(output, row["name"])
+        patch = compile_function(row)
+        target = patch["target"]
+        compiled = patch["bytes"]
 
         if compiled == target:
             print(f"  OK {row['name']} ({row['source']})")
+            patches.append(patch)
             continue
 
         failures += 1
@@ -268,10 +290,48 @@ def verify_functions():
         print(f"{failures} function(s) failed byte comparison")
         raise SystemExit(1)
 
+    return patches
+
+
+def patch_exe(patches, output):
+    output.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(EXE, output)
+
+    data = bytearray(output.read_bytes())
+    sections = pe_sections(data)
+    ranges = []
+    for patch in sorted(patches, key=lambda entry: entry["target_rva"]):
+        offset = rva_to_file_offset(sections, patch["target_rva"])
+        end = offset + len(patch["bytes"])
+        if data[offset:end] != patch["target"]:
+            raise SystemExit(f"{patch['name']}: target bytes changed before patching")
+        if ranges and offset < ranges[-1][1]:
+            raise SystemExit(f"{patch['name']}: patch overlaps previous patch")
+        ranges.append((offset, end))
+        data[offset:end] = patch["bytes"]
+
+    output.write_bytes(data)
+    return output
+
+
+def verify_noop_patch(patches):
+    patch_exe(patches, NOOP_EXE)
+
+    original_sha256 = hash_file(EXE, "sha256")
+    patched_sha256 = hash_file(NOOP_EXE, "sha256")
+
+    print("No-op patch:")
+    if patched_sha256 != original_sha256:
+        raise SystemExit(
+            f"  FAIL {NOOP_EXE.relative_to(ROOT)} sha256 {patched_sha256} != {original_sha256}"
+        )
+    print(f"  OK {NOOP_EXE.relative_to(ROOT)}")
+
 
 def main():
     verify_baseline()
-    verify_functions()
+    patches = verify_functions()
+    verify_noop_patch(patches)
 
 
 if __name__ == "__main__":

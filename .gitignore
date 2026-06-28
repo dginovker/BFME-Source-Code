@@ -1,4 +1,8 @@
-build/
+build/*
+!build/toolchains/
+build/toolchains/*
+!build/toolchains/vs2003/
+!build/toolchains/vs2003/**
 .venv/
 __pycache__/
 *.pyc
