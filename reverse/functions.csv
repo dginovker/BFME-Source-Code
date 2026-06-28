@@ -69,6 +69,9 @@ name,export_rva,target_rva,target_size,source,status,notes
 ??4RGBColor@@QAEAAU0@ABU0@@Z,0x00020770,0x007E6F80,26,src/math/color.cpp,matched,copies RGB channels
 ??4RGBAColorInt@@QAEAAU0@ABU0@@Z,0x0004868A,0x007E70A0,35,src/math/color.cpp,matched,copies RGBA channels
 ??4RGBAColorReal@@QAEAAU0@ABU0@@Z,0x0000CD83,0x007E7070,35,src/math/color.cpp,matched,copies RGBA channels
+??0Snapshot@@QAE@XZ,0x00024C80,0x0006B180,9,src/game/snapshot.cpp,matched,sets vtable pointer
+??0Snapshot@@QAE@ABV0@@Z,0x000021D0,0x0005C530,10,src/game/snapshot.cpp,matched,sets vtable pointer
+??1Snapshot@@UAE@XZ,0x00001C80,0x0005C520,7,src/game/snapshot.cpp,matched,sets vtable pointer
 ??4Snapshot@@QAEAAV0@ABV0@@Z,0x0001E150,0x0005C540,5,src/game/snapshot.cpp,matched,no-op assignment
 ??9ICoord2D@@QBE_NABUICoord2DBase@@@Z,0x0000FEDE,0x003D5250,31,src/math/icoord.cpp,matched,compares x/y
 ??9@YA_NABVGameClientRandomVariable@@0@Z,0x00016775,0x007E77A0,71,src/game/game_client_random_variable.cpp,matched,compares distribution/minimum/maximum
