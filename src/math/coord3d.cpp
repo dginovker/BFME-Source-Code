@@ -168,6 +168,11 @@ Coord3D &Coord3D::Add2D(const Coord3DBase &left, const Coord3DBase &right)
     return *this;
 }
 
+float Coord3D::lengthSqr() const
+{
+    return z * z + y * y + x * x;
+}
+
 Coord3D &Coord3D::Negate()
 {
     x = -x;

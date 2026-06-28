@@ -36,6 +36,7 @@ public:
     Coord3D &Add(const Coord3DBase &left, const Coord3DBase &right);
     Coord3D &Add2D(const Coord3DBase &that);
     Coord3D &Add2D(const Coord3DBase &left, const Coord3DBase &right);
+    float lengthSqr() const;
     Coord3D &Negate();
     Coord3D &Scale(float scale);
     Coord3D &Scale(const Coord3DBase &that, float scale);

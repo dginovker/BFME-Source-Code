@@ -108,6 +108,7 @@ name,export_rva,target_rva,target_size,source,status,notes
 ?height@Region2D@@QBEMXZ,0x00035053,0x00160B30,7,src/math/region.cpp,matched,returns float height
 ?height@Region3D@@QBEMXZ,0x00039225,0x001066C0,7,src/math/region.cpp,matched,returns float height
 ?add@Coord3D@@QAEXPBUCoord3DBase@@@Z,0x00022688,0x000B6570,31,src/math/coord3d.cpp,matched,adds Coord3DBase pointer
+?lengthSqr@Coord3D@@QBEMXZ,0x00020662,0x0014FF10,31,src/math/coord3d.cpp,matched,returns squared x/y/z length
 ?set@Coord3D@@QAEXMMM@Z,0x00005F0B,0x000FB9C0,23,src/math/coord3d.cpp,matched,sets x/y/z from floats
 ?set@Coord3D@@QAEXPBUCoord3DBase@@@Z,0x000491F2,0x000FB9A0,23,src/math/coord3d.cpp,matched,copies x/y/z from pointer
 ?setRange@GameClientRandomVariable@@QAEXMMW4DistributionType@1@@Z,0x00006C58,0x00096F40,23,src/game/game_client_random_variable.cpp,matched,sets distribution/minimum/maximum
