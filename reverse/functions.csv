@@ -101,6 +101,9 @@ name,export_rva,target_rva,target_size,source,status,notes
 ?GetLength@Coord2D@@QBEMXZ,0x00022FA2,0x0016E3A0,22,src/math/coord2d.cpp,matched,returns vector length
 ?GetLength2D@Coord3D@@QBEMXZ,0x00036D95,0x001A5D70,22,src/math/coord3d.cpp,matched,returns x/y vector length
 ?GetLength@Coord3D@@QBEMXZ,0x0002EF14,0x000FE9B0,33,src/math/coord3d.cpp,matched,returns vector length
+?GetLengthSqrd2D@Coord3D@@QBEMXZ,0x000185D9,0x001DD2C0,20,src/math/coord3d.cpp,matched,returns squared x/y length
+?GetLengthSqrd@Coord2D@@QBEMXZ,0x00013976,0x00233D00,20,src/math/coord2d.cpp,matched,returns squared x/y length
+?GetLengthSqrd@Coord3D@@QBEMXZ,0x0002E339,0x0015BEF0,31,src/math/coord3d.cpp,matched,returns squared x/y/z length
 ?Set2D@Coord3D@@QAEAAV1@MM@Z,0x0003D00A,0x007E5FB0,18,src/math/coord3d.cpp,matched,sets x/y from floats
 ?Set@Coord2D@@QAEAAV1@MM@Z,0x00037DA8,0x000FBA00,18,src/math/coord2d.cpp,matched,sets x/y from floats
 ?Set@Coord3D@@QAEAAV1@MMM@Z,0x00041C77,0x000C8D50,25,src/math/coord3d.cpp,matched,sets x/y/z from floats

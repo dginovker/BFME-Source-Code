@@ -197,6 +197,23 @@ float Coord3D::GetLength2D() const
     return (float)sqrt(x_value * x_value + y_value * y_value);
 }
 
+float Coord3D::GetLengthSqrd() const
+{
+    float x_value = x;
+    float y_value = y;
+    float z_value = z;
+
+    return x_value * x_value + y_value * y_value + z_value * z_value;
+}
+
+float Coord3D::GetLengthSqrd2D() const
+{
+    float x_value = x;
+    float y_value = y;
+
+    return x_value * x_value + y_value * y_value;
+}
+
 bool Coord3D::IsExactlyEqualTo(const Coord3D &that) const
 {
     return x == that.x && y == that.y && z == that.z;

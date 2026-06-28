@@ -136,6 +136,14 @@ float Coord2D::GetLength() const
     return (float)sqrt(x_value * x_value + y_value * y_value);
 }
 
+float Coord2D::GetLengthSqrd() const
+{
+    float x_value = x;
+    float y_value = y;
+
+    return x_value * x_value + y_value * y_value;
+}
+
 bool Coord2D::IsExactlyEqualTo(const Coord2D &that) const
 {
     return x == that.x && y == that.y;
