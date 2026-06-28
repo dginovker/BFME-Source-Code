@@ -40,11 +40,18 @@ name,export_rva,target_rva,target_size,source,status,notes
 ??4ICoord2DBase@@QAEAAU0@ABU0@@Z,0x00017071,0x007E6D50,19,src/math/icoord.cpp,matched,copies x/y from ICoord2DBase
 ??DCoord2D@@QBEMABUCoord3DBase@@@Z,0x0000DAF8,0x007E5AC0,19,src/math/coord2d.cpp,matched,dot product with Coord3DBase x/y
 ??DCoord2D@@QBEMABV0@@Z,0x0004A4BC,0x007E5A40,19,src/math/coord2d.cpp,matched,dot product with Coord2D
+??DCoord3D@@QBEMABUCoord3DBase@@@Z,0x00011F09,0x0018F1C0,27,src/math/coord3d.cpp,matched,dot product with Coord3DBase
+??DCoord3D@@QBEMABVCoord2D@@@Z,0x00044FE4,0x007E5CF0,19,src/math/coord3d.cpp,matched,dot product with Coord2D
 ??XCoord2D@@QAEAAV0@M@Z,0x00019C31,0x0014FF90,23,src/math/coord2d.cpp,matched,scales x/y in place
+??XCoord3D@@QAEAAV0@M@Z,0x00002A13,0x0016A290,33,src/math/coord3d.cpp,matched,scales x/y/z in place
 ??YCoord2D@@QAEAAV0@ABUCoord3DBase@@@Z,0x0003521A,0x007E5A80,24,src/math/coord2d.cpp,matched,adds Coord3DBase x/y
 ??YCoord2D@@QAEAAV0@ABV0@@Z,0x0001945C,0x002320C0,24,src/math/coord2d.cpp,matched,adds Coord2D
+??YCoord3D@@QAEAAV0@ABUCoord3DBase@@@Z,0x000233EE,0x00148730,33,src/math/coord3d.cpp,matched,adds Coord3DBase
+??YCoord3D@@QAEAAV0@ABVCoord2D@@@Z,0x000267FB,0x007E5CB0,24,src/math/coord3d.cpp,matched,adds Coord2D x/y
 ??ZCoord2D@@QAEAAV0@ABUCoord3DBase@@@Z,0x0003F7BF,0x007E5AA0,24,src/math/coord2d.cpp,matched,subtracts Coord3DBase x/y
 ??ZCoord2D@@QAEAAV0@ABV0@@Z,0x00045002,0x002320E0,24,src/math/coord2d.cpp,matched,subtracts Coord2D
+??ZCoord3D@@QAEAAV0@ABUCoord3DBase@@@Z,0x000126B6,0x0016A240,33,src/math/coord3d.cpp,matched,subtracts Coord3DBase
+??ZCoord3D@@QAEAAV0@ABVCoord2D@@@Z,0x000296FE,0x007E5CD0,24,src/math/coord3d.cpp,matched,subtracts Coord2D x/y
 ??8ICoord2D@@QBE_NABUICoord2DBase@@@Z,0x00010AA5,0x003D5220,31,src/math/icoord.cpp,matched,compares x/y
 ??8@YA_NABVGameClientRandomVariable@@0@Z,0x0002BEF9,0x007E7750,53,src/game/game_client_random_variable.cpp,matched,compares distribution/minimum/maximum
 ??8IRegion2D@@QBE_NABU0@@Z,0x00007338,0x00403AC0,47,src/math/region.cpp,matched,compares bounds
@@ -60,8 +67,20 @@ name,export_rva,target_rva,target_size,source,status,notes
 ?GetZVector@Matrix4D@@QBEAAVCoord3D@@AAV2@@Z,0x0003021F,0x007E6CC0,24,src/math/matrix4d.cpp,matched,copies z basis vector
 ?Add@Coord2D@@QAEAAV1@ABUCoord3DBase@@@Z,0x00016EEB,0x007E5AE0,24,src/math/coord2d.cpp,matched,adds Coord3DBase x/y
 ?Add@Coord2D@@QAEAAV1@ABV1@@Z,0x0000FA2E,0x0022F7C0,24,src/math/coord2d.cpp,matched,adds Coord2D
+?Add2D@Coord3D@@QAEAAV1@ABUCoord3DBase@@0@Z,0x000263B4,0x007E5DE0,28,src/math/coord3d.cpp,matched,adds two Coord3DBase x/y values
+?Add2D@Coord3D@@QAEAAV1@ABUCoord3DBase@@@Z,0x00002734,0x007E5DC0,24,src/math/coord3d.cpp,matched,adds Coord3DBase x/y
+?Add@Coord3D@@QAEAAV1@ABUCoord3DBase@@0@Z,0x00021DC3,0x007E5D10,37,src/math/coord3d.cpp,matched,adds two Coord3DBase values
+?Add@Coord3D@@QAEAAV1@ABUCoord3DBase@@@Z,0x0002F66C,0x000EC6F0,33,src/math/coord3d.cpp,matched,adds Coord3DBase
+?Add@Coord3D@@QAEAAV1@ABUCoord3DBase@@ABVCoord2D@@@Z,0x0001AE3D,0x007E5F20,34,src/math/coord3d.cpp,matched,adds Coord3DBase and Coord2D
+?Add@Coord3D@@QAEAAV1@ABVCoord2D@@@Z,0x00023452,0x007E5EB0,24,src/math/coord3d.cpp,matched,adds Coord2D x/y
+?Add@Coord3D@@QAEAAV1@ABVCoord2D@@ABUCoord3DBase@@@Z,0x0001F802,0x007E5EF0,34,src/math/coord3d.cpp,matched,adds Coord2D and Coord3DBase
 ?Negate@Coord2D@@QAEAAV1@XZ,0x0000848B,0x007E5B20,17,src/math/coord2d.cpp,matched,negates x/y
+?Negate@Coord3D@@QAEAAV1@XZ,0x0002C3CC,0x007E5DA0,25,src/math/coord3d.cpp,matched,negates x/y/z
 ?Scale@Coord2D@@QAEAAV1@M@Z,0x000444EF,0x0014FFB0,23,src/math/coord2d.cpp,matched,scales x/y in place
+?Scale2D@Coord3D@@QAEAAV1@ABUCoord3DBase@@M@Z,0x0000D4C7,0x007E5E80,27,src/math/coord3d.cpp,matched,scales Coord3DBase x/y
+?Scale2D@Coord3D@@QAEAAV1@M@Z,0x00035918,0x007E5E60,23,src/math/coord3d.cpp,matched,scales x/y in place
+?Scale@Coord3D@@QAEAAV1@ABUCoord3DBase@@M@Z,0x00034C98,0x007E5D70,37,src/math/coord3d.cpp,matched,scales Coord3DBase
+?Scale@Coord3D@@QAEAAV1@M@Z,0x0000E1C4,0x0014FFD0,33,src/math/coord3d.cpp,matched,scales x/y/z in place
 ?zero@Coord3D@@QAEXXZ,0x00029226,0x00083340,11,src/math/coord3d.cpp,matched,sets x/y/z to zero
 ?zero@ICoord3D@@QAEXXZ,0x000268C3,0x0045B890,11,src/math/icoord.cpp,matched,sets x/y/z to zero
 ?zero@Region3D@@QAEXXZ,0x0003652F,0x000BEC60,20,src/math/region.cpp,matched,sets bounds to zero
@@ -88,11 +107,21 @@ name,export_rva,target_rva,target_size,source,status,notes
 ?height@IRegion3D@@QBEHXZ,0x00005B5A,0x007E6F10,7,src/math/region.cpp,matched,returns integer height
 ?height@Region2D@@QBEMXZ,0x00035053,0x00160B30,7,src/math/region.cpp,matched,returns float height
 ?height@Region3D@@QBEMXZ,0x00039225,0x001066C0,7,src/math/region.cpp,matched,returns float height
+?add@Coord3D@@QAEXPBUCoord3DBase@@@Z,0x00022688,0x000B6570,31,src/math/coord3d.cpp,matched,adds Coord3DBase pointer
 ?set@Coord3D@@QAEXMMM@Z,0x00005F0B,0x000FB9C0,23,src/math/coord3d.cpp,matched,sets x/y/z from floats
 ?set@Coord3D@@QAEXPBUCoord3DBase@@@Z,0x000491F2,0x000FB9A0,23,src/math/coord3d.cpp,matched,copies x/y/z from pointer
 ?setRange@GameClientRandomVariable@@QAEXMMW4DistributionType@1@@Z,0x00006C58,0x00096F40,23,src/game/game_client_random_variable.cpp,matched,sets distribution/minimum/maximum
+?scale@Coord3D@@QAEXM@Z,0x000236AF,0x000B6CD0,31,src/math/coord3d.cpp,matched,scales x/y/z in place
 ?Sub@Coord2D@@QAEAAV1@ABUCoord3DBase@@@Z,0x0002DEB6,0x007E5B00,24,src/math/coord2d.cpp,matched,subtracts Coord3DBase x/y
 ?Sub@Coord2D@@QAEAAV1@ABV1@@Z,0x0001777E,0x0018F1A0,24,src/math/coord2d.cpp,matched,subtracts Coord2D
+?Sub2D@Coord3D@@QAEAAV1@ABUCoord3DBase@@0@Z,0x0000F1A5,0x007E5E30,28,src/math/coord3d.cpp,matched,subtracts two Coord3DBase x/y values
+?Sub2D@Coord3D@@QAEAAV1@ABUCoord3DBase@@@Z,0x0004651A,0x007E5E10,24,src/math/coord3d.cpp,matched,subtracts Coord3DBase x/y
+?Sub@Coord3D@@QAEAAV1@ABUCoord3DBase@@0@Z,0x000375D8,0x007E5D40,37,src/math/coord3d.cpp,matched,subtracts two Coord3DBase values
+?Sub@Coord3D@@QAEAAV1@ABUCoord3DBase@@@Z,0x000179EF,0x000C3D40,33,src/math/coord3d.cpp,matched,subtracts Coord3DBase
+?Sub@Coord3D@@QAEAAV1@ABUCoord3DBase@@ABVCoord2D@@@Z,0x00031D36,0x007E5F80,34,src/math/coord3d.cpp,matched,subtracts Coord2D from Coord3DBase
+?Sub@Coord3D@@QAEAAV1@ABVCoord2D@@@Z,0x00036881,0x007E5ED0,24,src/math/coord3d.cpp,matched,subtracts Coord2D x/y
+?Sub@Coord3D@@QAEAAV1@ABVCoord2D@@ABUCoord3DBase@@@Z,0x0003595E,0x007E5F50,36,src/math/coord3d.cpp,matched,subtracts Coord3DBase from Coord2D
+?sub@Coord3D@@QAEXPBUCoord3DBase@@@Z,0x00045084,0x000C3CE0,31,src/math/coord3d.cpp,matched,subtracts Coord3DBase pointer
 ?width@IRegion2D@@QBEHXZ,0x00029299,0x001A19A0,6,src/math/region.cpp,matched,returns integer width
 ?width@IRegion3D@@QBEHXZ,0x0000D37D,0x007E6F00,6,src/math/region.cpp,matched,returns integer width
 ?width@Region2D@@QBEMXZ,0x00011CB1,0x00160B20,6,src/math/region.cpp,matched,returns float width
