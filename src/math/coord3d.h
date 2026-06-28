@@ -5,6 +5,7 @@ public:
     ~Coord3D();
 
     void zero();
+    Coord3D &SetZero();
 
     float x;
     float y;
