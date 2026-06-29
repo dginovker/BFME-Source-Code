@@ -28,6 +28,7 @@ name,export_rva,target_rva,target_size,source,status,notes
 ??0Region3D@@QAE@ABU0@@Z,0x00032E02,0x000BEC90,43,src/math/region.cpp,matched,copies bounds
 ??0Region3D@@QAE@XZ,0x00024573,0x000BEC80,3,src/math/region.cpp,matched,empty constructor returns self
 ??0RGBColorKeyframe@FXParticleSystem@@QAE@XZ,0x00029677,0x0005C700,16,src/math/color.cpp,matched,sets channels and frame to zero
+??0AsciiString@@QAE@XZ,0x00017BD9,0x00062030,9,src/game/ascii_string.cpp,matched,default constructor sets text pointer to null
 ??1Coord2D@@QAE@XZ,0x0003EAB8,0x0005BD90,1,src/math/coord2d.cpp,matched,empty destructor emits ret
 ??1Coord3D@@QAE@XZ,0x0001364C,0x0005BC40,1,src/math/coord3d.cpp,matched,empty destructor emits ret
 ??1Region2D@@QAE@XZ,0x000071DF,0x0005C310,1,src/math/region.cpp,matched,empty destructor emits ret
