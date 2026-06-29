@@ -6,6 +6,19 @@
 
 namespace FXParticleSystem {
 
+enum ModuleCategory {
+    MODULE_CATEGORY_DRAW = 0,
+    MODULE_CATEGORY_UPDATE = 1,
+    MODULE_CATEGORY_EMISSION = 2,
+    MODULE_CATEGORY_VELOCITY = 3,
+    MODULE_CATEGORY_VOLUME = 4,
+    MODULE_CATEGORY_LIFE_EVENT = 5,
+    MODULE_CATEGORY_COLLISION = 6,
+    MODULE_CATEGORY_WIND = 7,
+};
+
+const char *GetKey(ModuleCategory category);
+
 class ButterflyDrawModuleInfo {
 public:
     virtual ~ButterflyDrawModuleInfo();

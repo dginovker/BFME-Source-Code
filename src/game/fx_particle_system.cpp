@@ -2,6 +2,24 @@
 
 namespace FXParticleSystem {
 
+__declspec(naked) const char *GetKey(ModuleCategory category)
+{
+    __asm {
+        __emit 0x8b
+        __emit 0x44
+        __emit 0x24
+        __emit 0x04
+        __emit 0x8b
+        __emit 0x04
+        __emit 0xc5
+        __emit 0x04
+        __emit 0x05
+        __emit 0x11
+        __emit 0x01
+        __emit 0xc3
+    }
+}
+
 template <int Category, int SubCategory = 1>
 class CategoryModuleClassBase {
 public:
