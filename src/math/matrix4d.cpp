@@ -1,5 +1,7 @@
 #include "matrix4d.h"
 
+#include <string.h>
+
 Matrix4D::Matrix4D()
 {
 }
@@ -306,4 +308,60 @@ Matrix4D &Matrix4D::SetIdentity()
     ((unsigned int *)values)[14] = zero;
     ((unsigned int *)values)[15] = one;
     return *this;
+}
+
+__declspec(naked) bool Matrix4D::IsExactlyEqualTo(const Matrix4D &that) const
+{
+    __asm {
+        mov eax, [esp + 4]
+        cmp ecx, eax
+        jne compare
+        mov al, 1
+        ret 4
+    compare:
+        push esi
+        push ebx
+        xor esi, esi
+        push edi
+    loop_start:
+        mov edi, [ecx]
+        mov edx, [eax]
+        mov ebx, [ecx + 4]
+        xor edx, edi
+        mov edi, [eax + 4]
+        add eax, 4
+        add ecx, 4
+        xor edi, ebx
+        mov ebx, [ecx + 4]
+        or edx, edi
+        mov edi, [eax + 4]
+        add eax, 4
+        add ecx, 4
+        xor edi, ebx
+        mov ebx, [ecx + 4]
+        or edx, edi
+        mov edi, [eax + 4]
+        add eax, 4
+        add ecx, 4
+        xor edi, ebx
+        or edx, edi
+        add eax, 4
+        add ecx, 4
+        test edx, edx
+        jne not_equal
+        inc esi
+        cmp esi, 4
+        jl loop_start
+        pop edi
+        pop ebx
+        mov al, 1
+        pop esi
+        ret 4
+    not_equal:
+        pop edi
+        pop ebx
+        xor al, al
+        pop esi
+        ret 4
+    }
 }
