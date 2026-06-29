@@ -49,6 +49,7 @@ public:
 class EmissionVelocityInfo {
 public:
     EmissionVelocityInfo();
+    EmissionVelocityInfo(const EmissionVelocityInfo &that);
     virtual ~EmissionVelocityInfo();
     virtual const char *GetSnapshotName();
     virtual void LoadPostProcess();
@@ -58,6 +59,7 @@ public:
 class EmissionVolumeInfo {
 public:
     EmissionVolumeInfo();
+    EmissionVolumeInfo(const EmissionVolumeInfo &that);
     virtual ~EmissionVolumeInfo();
     virtual const char *GetSnapshotName();
     virtual void LoadPostProcess();

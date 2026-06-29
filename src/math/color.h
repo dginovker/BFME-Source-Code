@@ -34,6 +34,7 @@ namespace FXParticleSystem {
 
 struct RGBColorKeyframe {
     RGBColorKeyframe();
+    RGBColorKeyframe &operator=(const RGBColorKeyframe &that);
 
     float red;
     float green;

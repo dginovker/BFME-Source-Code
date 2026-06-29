@@ -68,4 +68,17 @@ RGBColorKeyframe::RGBColorKeyframe()
     ((unsigned int *)this)[3] = 0;
 }
 
+RGBColorKeyframe &RGBColorKeyframe::operator=(const RGBColorKeyframe &that)
+{
+    struct Raw {
+        unsigned int red;
+        unsigned int green;
+        unsigned int blue;
+        unsigned int frame;
+    };
+
+    *(Raw *)this = *(const Raw *)&that;
+    return *this;
+}
+
 }

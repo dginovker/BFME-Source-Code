@@ -60,6 +60,10 @@ EmissionVelocityInfo::EmissionVelocityInfo()
 {
 }
 
+EmissionVelocityInfo::EmissionVelocityInfo(const EmissionVelocityInfo &that)
+{
+}
+
 EmissionVelocityInfo::~EmissionVelocityInfo()
 {
 }
@@ -72,6 +76,11 @@ const char *EmissionVelocityInfo::GetSnapshotName()
 EmissionVolumeInfo::EmissionVolumeInfo()
 {
     m_flag = false;
+}
+
+EmissionVolumeInfo::EmissionVolumeInfo(const EmissionVolumeInfo &that)
+{
+    m_flag = that.m_flag;
 }
 
 EmissionVolumeInfo::~EmissionVolumeInfo()
