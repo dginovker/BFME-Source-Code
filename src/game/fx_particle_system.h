@@ -24,6 +24,7 @@ public:
     virtual ~DefaultAlphaModuleInfo();
     virtual const char *GetSnapshotName();
     virtual void LoadPostProcess();
+    DefaultAlphaModuleInfo &operator=(const DefaultAlphaModuleInfo &that);
 };
 
 class DefaultColorModuleInfo {
