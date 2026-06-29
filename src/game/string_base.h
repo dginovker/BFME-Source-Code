@@ -7,6 +7,9 @@ public:
     bool isEmpty() const;
 
 private:
+    void validate() const;
+
+private:
     struct Header {
         int ref_count;
         unsigned short length;
