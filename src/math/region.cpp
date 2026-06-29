@@ -2,6 +2,13 @@
 
 #include "icoord.h"
 
+RealRange &RealRange::operator=(const RealRange &that)
+{
+    min = that.min;
+    max = that.max;
+    return *this;
+}
+
 bool IRegion2D::operator==(const IRegion2D &that) const
 {
     return x_min == that.x_min &&

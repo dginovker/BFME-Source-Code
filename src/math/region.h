@@ -6,6 +6,13 @@
 struct ICoord2D;
 struct ICoord3D;
 
+struct RealRange {
+    RealRange &operator=(const RealRange &that);
+
+    float min;
+    float max;
+};
+
 struct IRegion2D {
     bool operator==(const IRegion2D &that) const;
     bool operator!=(const IRegion2D &that) const;
