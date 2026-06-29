@@ -3,6 +3,8 @@
 #include "coord2d.h"
 
 struct Coord3DBase {
+    Coord3DBase &operator=(const Coord3DBase &that);
+
     float x;
     float y;
     float z;

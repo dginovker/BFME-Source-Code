@@ -2,6 +2,17 @@
 
 #include <math.h>
 
+Coord3DBase &Coord3DBase::operator=(const Coord3DBase &that)
+{
+    struct Raw {
+        unsigned int x;
+        unsigned int y;
+        unsigned int z;
+    };
+    *(Raw *)this = *(const Raw *)&that;
+    return *this;
+}
+
 Coord3D::Coord3D()
 {
 }

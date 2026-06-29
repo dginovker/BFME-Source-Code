@@ -58,6 +58,17 @@ ICoord3D::ICoord3D(int x, int y, int z)
     this->z = z;
 }
 
+ICoord3D &ICoord3D::operator=(const ICoord3D &that)
+{
+    struct Raw {
+        int x;
+        int y;
+        int z;
+    };
+    *(Raw *)this = *(const Raw *)&that;
+    return *this;
+}
+
 void ICoord3D::zero()
 {
     x = 0;

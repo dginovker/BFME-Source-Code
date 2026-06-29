@@ -22,6 +22,8 @@ struct ICoord3D {
     ICoord3D();
     ICoord3D(int x, int y, int z);
 
+    ICoord3D &operator=(const ICoord3D &that);
+
     void zero();
 
     int x;
