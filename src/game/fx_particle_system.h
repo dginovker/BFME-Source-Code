@@ -1,5 +1,6 @@
 #pragma once
 
+#include "ascii_string.h"
 #include "xfer.h"
 
 namespace FXParticleSystem {
@@ -159,6 +160,11 @@ public:
 class ModuleTemplate {
 public:
     ModuleTemplate &operator=(const ModuleTemplate &that);
+};
+
+class ParticleSystemTemplate {
+public:
+    AsciiString getName() const;
 };
 
 }

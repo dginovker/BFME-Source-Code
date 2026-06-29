@@ -369,3 +369,5 @@ name,export_rva,target_rva,target_size,source,status,notes
 ??9@YA_NABV?$StringBase@D@@PBD@Z,0x000153A7,0x000D0D30,21,src/game/string_base.cpp,matched,StringBase<char> not-equal C string
 ??0AsciiString@@QAE@D@Z,0x0000A939,0x007E8420,19,src/game/ascii_string.cpp,matched,construct from single char
 ??4AsciiString@@QAEAAV0@ABV0@@Z,0x00003765,0x0005C500,19,src/game/ascii_string.cpp,matched,copy assignment
+??YAsciiString@@QAEAAV0@ABV0@@Z,0x000125E4,0x000D1810,63,src/game/ascii_string.cpp,matched,append AsciiString
+?getName@ParticleSystemTemplate@FXParticleSystem@@QBE?AVAsciiString@@XZ,0x00001E5B,0x0005F210,35,src/game/fx_particle_system.cpp,matched,return particle system name
