@@ -6,6 +6,7 @@ public:
     void debugIgnoreLeaks();
     bool isEmpty() const;
     int getLength() const;
+    const T *str() const;
 
 private:
     void validate() const;

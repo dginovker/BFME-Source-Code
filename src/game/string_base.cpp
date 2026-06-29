@@ -20,6 +20,12 @@ int StringBase<T>::getLength() const
 }
 
 template <typename T>
+const T *StringBase<T>::str() const
+{
+    return m_data ? &m_data->data[0] : (const T *)"";
+}
+
+template <typename T>
 void StringBase<T>::validate() const
 {
 }
