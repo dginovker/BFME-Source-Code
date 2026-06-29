@@ -1,5 +1,13 @@
 #include "xfer.h"
 
+Xfer::Xfer()
+{
+}
+
+Xfer::~Xfer()
+{
+}
+
 bool Xfer::IsLoading() const
 {
     return false;

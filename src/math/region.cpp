@@ -54,6 +54,16 @@ IRegion3D::IRegion3D()
 {
 }
 
+IRegion3D &IRegion3D::operator=(const IRegion3D &that)
+{
+    struct IRegion3DBase {
+        int x_min, y_min, z_min, x_max, y_max, z_max;
+    };
+    IRegion3DBase *base = (IRegion3DBase *)this;
+    *base = *(IRegion3DBase *)&that;
+    return *this;
+}
+
 void IRegion3D::expandBy(const ICoord3D &point)
 {
     if (point.x < x_min) {

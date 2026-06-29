@@ -38,6 +38,21 @@ const T *StringBase<T>::str() const
 }
 
 template <typename T>
+const T *StringBase<T>::find(T c) const
+{
+    const T *start = m_data ? &m_data->data[0] : (const T *)"";
+    const T *end = start + (m_data ? m_data->length : 0);
+
+    for (const T *p = start; p != end; ++p) {
+        if (*p == c) {
+            return p;
+        }
+    }
+
+    return 0;
+}
+
+template <typename T>
 T *StringBase<T>::peek() const
 {
     return &m_data->data[0];

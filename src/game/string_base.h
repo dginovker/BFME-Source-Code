@@ -8,6 +8,7 @@ public:
     bool isNotEmpty() const;
     int getLength() const;
     const T *str() const;
+    const T *find(T c) const;
     T getCharAt(int index) const;
 
 private:
