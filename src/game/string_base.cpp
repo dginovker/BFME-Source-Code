@@ -14,6 +14,12 @@ bool StringBase<T>::isEmpty() const
 }
 
 template <typename T>
+bool StringBase<T>::isNotEmpty() const
+{
+    return !isEmpty();
+}
+
+template <typename T>
 int StringBase<T>::getLength() const
 {
     return m_data ? m_data->length : 0;
@@ -23,6 +29,18 @@ template <typename T>
 const T *StringBase<T>::str() const
 {
     return m_data ? &m_data->data[0] : (const T *)"";
+}
+
+template <typename T>
+T *StringBase<T>::peek() const
+{
+    return &m_data->data[0];
+}
+
+template <typename T>
+T StringBase<T>::getCharAt(int index) const
+{
+    return m_data ? m_data->data[index] : 0;
 }
 
 template <typename T>

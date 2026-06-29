@@ -5,11 +5,14 @@ class StringBase {
 public:
     void debugIgnoreLeaks();
     bool isEmpty() const;
+    bool isNotEmpty() const;
     int getLength() const;
     const T *str() const;
+    T getCharAt(int index) const;
 
 private:
     void validate() const;
+    T *peek() const;
 
 private:
     struct Header {

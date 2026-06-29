@@ -258,3 +258,10 @@ name,export_rva,target_rva,target_size,source,status,notes
 ?IsCRC@Xfer@@UBE_NXZ,0x0001BE7D,0x007E7690,3,src/game/xfer.cpp,matched,returns false
 ?IsLightCRC@Xfer@@UBE_NXZ,0x00028B78,0x007E76A0,3,src/game/xfer.cpp,matched,returns false
 ?SkipBadBlock@Xfer@@UAEXAAVSnapshot@@I@Z,0x00048B44,0x0006B1D0,3,src/game/xfer.cpp,matched,no-op
+?isNotEmpty@?$StringBase@D@@QBE_NXZ,0x0002D5C4,0x0005E510,38,src/game/string_base.cpp,matched,returns true if non-null and non-empty
+?isNotEmpty@?$StringBase@G@@QBE_NXZ,0x00038663,0x0052D3E0,38,src/game/string_base.cpp,matched,returns true if non-null and non-empty
+?peek@?$StringBase@D@@ABEPADXZ,0x0002B26A,0x0005E5B0,6,src/game/string_base.cpp,matched,returns pointer to data
+?peek@?$StringBase@G@@ABEPAGXZ,0x0002264C,0x0005E5C0,6,src/game/string_base.cpp,matched,returns pointer to data
+?getCharAt@?$StringBase@D@@QBEDH@Z,0x00038A14,0x0007FB80,18,src/game/string_base.cpp,matched,returns character at index
+?getCharAt@?$StringBase@G@@QBEGH@Z,0x0001588E,0x0043D590,18,src/game/string_base.cpp,matched,returns character at index
+?str@?$StringBase@G@@QBEPBGXZ,0x0002287C,0x0005F290,16,src/game/string_base.cpp,matched,returns c-string
