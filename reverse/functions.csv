@@ -575,3 +575,5 @@ name,export_rva,target_rva,target_size,source,status,notes
 ?GetName@FXParticleSystem@@YAPBDW4ModuleCategory@1@@Z,0x00048B58,0x005D4510,12,src/game/fx_particle_system.cpp,matched,returns name for module category
 ??0Keyframe@FXParticleSystem@@QAE@XZ,0x0002F21B,0x0005C6C0,16,src/game/fx_particle_system.cpp,matched,default constructor zeroes frame and value
 ??0SphereEmissionVolumeInfo@FXParticleSystem@@QAE@XZ,0x0004B2AE,0x005D6120,17,src/game/fx_particle_system.cpp,matched,default constructor initializes base and radius
+?ACos@@YAMM@Z,0x00873940,0x00873940,10,src/math/trig.cpp,matched,wraps internal acos helper
+?ASin@@YAMM@Z,0x00873950,0x00873950,10,src/math/trig.cpp,matched,wraps internal asin helper
