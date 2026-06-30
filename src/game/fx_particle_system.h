@@ -51,6 +51,7 @@ template <int Category> class DefaultModule;
 template <int Category> class DefaultModuleTemplate;
 template <int Category> class DefaultParticleModule;
 template <int Category> class DefaultParticleModuleTemplate;
+template <int Category> class CategoryModuleTemplate;
 
 // Forward declarations for module classes used by ModuleTag
 class BoxEmissionVolumeModule;
@@ -173,7 +174,7 @@ public:
 class ButterflyDrawModuleInfo {
 public:
     ButterflyDrawModuleInfo();
-    ButterflyDrawModuleInfo(const ButterflyDrawModuleInfo &that);
+    __declspec(nothrow) ButterflyDrawModuleInfo(const ButterflyDrawModuleInfo &that);
     virtual ~ButterflyDrawModuleInfo();
     virtual const char *GetSnapshotName();
     virtual void LoadPostProcess();
@@ -181,15 +182,6 @@ public:
     ButterflyDrawModuleInfo &operator=(const ButterflyDrawModuleInfo &that);
 };
 
-class ButterflyDrawModuleTemplate {
-public:
-    ButterflyDrawModuleTemplate();
-    ButterflyDrawModuleTemplate(const ButterflyDrawModuleTemplate &that);
-    virtual ~ButterflyDrawModuleTemplate();
-    ButterflyDrawModuleTemplate &operator=(const ButterflyDrawModuleTemplate &that);
-    void parse(INI *ini);
-    virtual void writeINI(File &file, unsigned int flags) const;
-};
 
 class DefaultAlphaModuleInfo {
 public:
@@ -409,7 +401,7 @@ public:
 class QuadDrawModuleInfo {
 public:
     QuadDrawModuleInfo();
-    QuadDrawModuleInfo(const QuadDrawModuleInfo &that);
+    __declspec(nothrow) QuadDrawModuleInfo(const QuadDrawModuleInfo &that);
     virtual ~QuadDrawModuleInfo();
     virtual const char *GetSnapshotName();
     virtual void LoadPostProcess();
@@ -417,15 +409,6 @@ public:
     QuadDrawModuleInfo &operator=(const QuadDrawModuleInfo &that);
 };
 
-class QuadDrawModuleTemplate {
-public:
-    QuadDrawModuleTemplate();
-    QuadDrawModuleTemplate(const QuadDrawModuleTemplate &that);
-    virtual ~QuadDrawModuleTemplate();
-    QuadDrawModuleTemplate &operator=(const QuadDrawModuleTemplate &that);
-    void parse(INI *ini);
-    virtual void writeINI(File &file, unsigned int flags) const;
-};
 
 class RenderObjectDrawModuleInfo {
 public:
@@ -741,9 +724,29 @@ template <int Category>
 class CategoryModuleTemplate : public CategoryModuleTemplateBase<Category> {
 public:
     CategoryModuleTemplate();
-    CategoryModuleTemplate(const CategoryModuleTemplate<Category> &that);
+    __declspec(nothrow) CategoryModuleTemplate(const CategoryModuleTemplate<Category> &that);
     virtual ~CategoryModuleTemplate();
     CategoryModuleTemplate<Category> &operator=(const CategoryModuleTemplate<Category> &that) { return *this; }
+};
+
+class ButterflyDrawModuleTemplate : public CategoryModuleTemplate<6>, public ButterflyDrawModuleInfo {
+public:
+    ButterflyDrawModuleTemplate();
+    ButterflyDrawModuleTemplate(const ButterflyDrawModuleTemplate &that);
+    virtual ~ButterflyDrawModuleTemplate();
+    ButterflyDrawModuleTemplate &operator=(const ButterflyDrawModuleTemplate &that);
+    void parse(INI *ini);
+    virtual void writeINI(File &file, unsigned int flags) const;
+};
+
+class QuadDrawModuleTemplate : public CategoryModuleTemplate<6>, public QuadDrawModuleInfo {
+public:
+    QuadDrawModuleTemplate();
+    QuadDrawModuleTemplate(const QuadDrawModuleTemplate &that);
+    virtual ~QuadDrawModuleTemplate();
+    QuadDrawModuleTemplate &operator=(const QuadDrawModuleTemplate &that);
+    void parse(INI *ini);
+    virtual void writeINI(File &file, unsigned int flags) const;
 };
 
 template <typename Tag> class ConcreteModuleClass;
