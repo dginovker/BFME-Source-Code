@@ -348,3 +348,27 @@ __declspec(naked) Debug &operator<<(Debug &debug, const StringBase<char> &str)
         __emit 0xc3
     }
 }
+
+__declspec(naked) void StringBase<char>::clear()
+{
+    __asm {
+        __emit 0xe9
+        __emit 0x7b
+        __emit 0xf8
+        __emit 0x81
+        __emit 0x00
+        __emit 0xcc
+    }
+}
+
+__declspec(naked) void StringBase<wchar_t>::clear()
+{
+    __asm {
+        __emit 0xe9
+        __emit 0x3b
+        __emit 0x01
+        __emit 0x82
+        __emit 0x00
+        __emit 0xcc
+    }
+}

@@ -10,6 +10,7 @@ public:
     const T *str() const;
     const T *find(T c) const;
     T getCharAt(int index) const;
+    void clear();
 
 private:
     StringBase();
