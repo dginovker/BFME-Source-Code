@@ -1,5 +1,7 @@
 #pragma once
 
+class UnicodeString;
+
 class AsciiString {
 public:
     AsciiString();
@@ -8,13 +10,18 @@ public:
     AsciiString(const char *str);
     AsciiString(const char *str, int len);
     AsciiString(const AsciiString &that, int start, int len);
+    AsciiString(const UnicodeString &that);
     ~AsciiString();
     AsciiString &operator=(const AsciiString &that);
     AsciiString &operator=(char c);
     AsciiString &operator=(const char *str);
+    AsciiString &operator=(const UnicodeString &that);
     AsciiString &operator+=(const AsciiString &that);
     AsciiString &operator+=(char c);
     AsciiString &operator+=(const char *str);
+    AsciiString &operator+=(const UnicodeString &that);
+    void __cdecl format(AsciiString fmt, ...);
+    void translate(const UnicodeString &that);
 
     friend AsciiString operator+(AsciiString left, const char *right);
     friend AsciiString operator+(AsciiString left, const AsciiString &right);

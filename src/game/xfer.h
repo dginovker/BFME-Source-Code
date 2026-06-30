@@ -18,6 +18,7 @@ class Xfer {
 public:
     Xfer();
     virtual ~Xfer();
+    void Version1();
 
     virtual bool IsLoading() const;
     virtual bool IsStoring() const;

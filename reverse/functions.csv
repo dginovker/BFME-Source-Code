@@ -689,3 +689,17 @@ name,export_rva,target_rva,target_size,source,status,notes
 ?toUpper@?$StringBase@G@@QAEXXZ,0x00888740,0x888740,248,src/game/string_base.cpp,matched,
 ?trim@?$StringBase@D@@QAEXXZ,0x00888CA0,0x888ca0,172,src/game/string_base.cpp,matched,
 ?trim@?$StringBase@G@@QAEXXZ,0x00888ED0,0x888ed0,147,src/game/string_base.cpp,matched,
+?_IsValidBlock@MemoryPool@@YA_NPAX@Z,0x00882D10,0x00882D10,38,src/game/memory_pool.cpp,matched,validate heap block
+?_Allocate@MemoryPool@@YAPAXIW4AllocType@1@@Z,0x00882960,0x00882960,433,src/game/memory_pool.cpp,matched,allocate block from pool
+?_Free@MemoryPool@@YAXPAXW4AllocType@1@@Z,0x00882BA0,0x00882BA0,358,src/game/memory_pool.cpp,matched,free pool block
+?_Reallocate@MemoryPool@@YAPAXPAXIW4AllocType@1@@Z,0x00882B20,0x00882B20,115,src/game/memory_pool.cpp,matched,reallocate pool block
+?_Init@MemoryPool@@YAXXZ,0x008827D0,0x008827D0,366,src/game/memory_pool.cpp,matched,initialize memory pool
+?_VerifyIntegrity@MemoryPool@@YAXXZ,0x00882D50,0x00882D50,180,src/game/memory_pool.cpp,matched,verify pool integrity
+??0AsciiString@@QAE@ABVUnicodeString@@@Z,0x00889090,0x00889090,110,src/game/ascii_string.cpp,matched,construct AsciiString from UnicodeString
+??4AsciiString@@QAEAAV0@ABVUnicodeString@@@Z,0x00889100,0x00889100,56,src/game/ascii_string.cpp,matched,AsciiString operator=(const UnicodeString&)
+??YAsciiString@@QAEAAV0@ABVUnicodeString@@@Z,0x00889140,0x00889140,73,src/game/ascii_string.cpp,matched,AsciiString operator+=(const UnicodeString&)
+?format@AsciiString@@QAAXV1@ZZ,0x00888FF0,0x00888FF0,93,src/game/ascii_string.cpp,matched,AsciiString format varargs
+?translate@AsciiString@@QAEXABVUnicodeString@@@Z,0x00889050,0x00889050,54,src/game/ascii_string.cpp,matched,translate UnicodeString to AsciiString
+?format@UnicodeString@@QAAXV1@ZZ,0x00889190,0x00889190,93,src/game/unicode_string.cpp,matched,UnicodeString format varargs
+?translate@UnicodeString@@QAEXABVAsciiString@@@Z,0x008891F0,0x008891F0,54,src/game/unicode_string.cpp,matched,translate AsciiString to UnicodeString
+?Version1@Xfer@@QAEXXZ,0x000429C9,0x000C7E90,21,src/game/xfer.cpp,matched,xfer version 1 marker
