@@ -201,6 +201,7 @@ public:
     AsciiString getName() const;
     AsciiString getTextureFilename() const;
     void setTextureFilename(AsciiString &filename);
+    void setSlaveSystemName(const AsciiString &name);
 };
 
 }

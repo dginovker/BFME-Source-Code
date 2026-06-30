@@ -382,3 +382,4 @@ name,export_rva,target_rva,target_size,source,status,notes
 ??4DefaultAlphaModuleInfo@FXParticleSystem@@QAEAAV01@ABV01@@Z,0x0001EC36,0x005D4F90,237,src/game/fx_particle_system.cpp,matched,copy assignment of alpha module data
 ?GetKey@FXParticleSystem@@YAPBDW4ModuleCategory@1@@Z,0x0000971E,0x005D4520,12,src/game/fx_particle_system.cpp,matched,lookup category key string
 ?setTextureFilename@ParticleSystemTemplate@FXParticleSystem@@QAEXAAVAsciiString@@@Z,0x000163FB,0x0005CB50,8,src/game/fx_particle_system.cpp,matched,adjusts this pointer and assigns texture filename
+?setSlaveSystemName@ParticleSystemTemplate@FXParticleSystem@@QAEXABVAsciiString@@@Z,0x00041F47,0x005BE690,28,src/game/fx_particle_system.cpp,matched,assigns slave system name and clears flag
