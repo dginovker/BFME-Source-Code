@@ -435,6 +435,8 @@ def main(only=None):
         # iterate; run with no arguments for the full check before committing.
         verify_functions(only)
         return
+    print("Full verification. While iterating, check one file in seconds:")
+    print("  ./build.sh <source-or-function>   e.g. ./build.sh src/math/color.cpp\n")
     verify_baseline()
     patches = verify_functions()
     verify_noop_patch(patches)

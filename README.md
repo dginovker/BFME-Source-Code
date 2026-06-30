@@ -41,3 +41,9 @@ On Windows:
 ```
 
 The build verifies the baseline, byte-compares tracked source against the original executable, and checks that a no-op patched copy hashes identically.
+
+While iterating on one function, verify just its source in a few seconds (instead of the full ~2 min):
+
+```bash
+./build.sh src/math/color.cpp   # or a function name
+```
