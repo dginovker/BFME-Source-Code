@@ -49,6 +49,19 @@ template <> CategoryModuleClass<8>::CategoryModuleClass(bool, const char *key, c
     s_firstList = this;
 }
 
+// getDefault returns the registered default module for categories that have one.
+#define CAT_DEFAULT(N) \
+    template <> const CategoryModuleClass<N> &CategoryModuleClassBase<N>::getDefault() { return *s_defaultModule; }
+
+CAT_DEFAULT(0)
+CAT_DEFAULT(1)
+CAT_DEFAULT(2)
+CAT_DEFAULT(3)
+CAT_DEFAULT(4)
+CAT_DEFAULT(5)
+CAT_DEFAULT(6)
+CAT_DEFAULT(7)
+
 // Destructors: the compiler emits the vtable reset automatically because
 // CategoryModuleClass has a virtual destructor; the exact vtable address is
 // filled in by the patcher from the original binary.
