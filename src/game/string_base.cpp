@@ -463,6 +463,30 @@ __declspec(naked) void StringBase<wchar_t>::set(const wchar_t *str)
     }
 }
 
+template <typename T>
+void StringBase<T>::swap(StringBase<T> &other)
+{
+    Header *tmp = m_data;
+    m_data = other.m_data;
+    other.m_data = tmp;
+}
+
+template <typename T>
+const T *StringBase<T>::reverseFind(T c) const
+{
+    const T *start = m_data ? &m_data->data[0] : (const T *)"";
+    const T *p = start + (m_data ? m_data->length : 0);
+
+    while (p != start) {
+        --p;
+        if (*p == c) {
+            return p;
+        }
+    }
+
+    return 0;
+}
+
 template class StringBase<char>;
 template class StringBase<wchar_t>;
 
