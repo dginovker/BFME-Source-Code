@@ -349,6 +349,10 @@ name,export_rva,target_rva,target_size,source,status,notes
 ?swap@?$StringBase@D@@QAEXAAV1@@Z,0x0002E4E7,0x0006F4E0,17,src/game/string_base.cpp,matched,swap m_data pointers
 ?swap@?$StringBase@G@@QAEXAAV1@@Z,0x000325F1,0x004B22E0,17,src/game/string_base.cpp,matched,swap m_data pointers
 ??0EmissionVelocityInfo@FXParticleSystem@@QAE@ABV01@@Z,0x00038D4D,0x005BD820,11,src/game/fx_particle_system.cpp,matched,copy constructor
+??0CylindricalEmissionVelocityInfo@FXParticleSystem@@QAE@ABV01@@Z,0x00021A85,0x005D7710,71,src/game/fx_particle_system_bulk.cpp,matched,
+??0OrthoEmissionVelocityInfo@FXParticleSystem@@QAE@ABV01@@Z,0x00003FB2,0x005D6DA0,93,src/game/fx_particle_system_bulk.cpp,matched,
+??0OutwardEmissionVelocityInfo@FXParticleSystem@@QAE@ABV01@@Z,0x0000AEE8,0x005D7B20,71,src/game/fx_particle_system_bulk.cpp,matched,
+??0SphericalEmissionVelocityInfo@FXParticleSystem@@QAE@ABV01@@Z,0x0001B2D4,0x005D71E0,49,src/game/fx_particle_system_bulk.cpp,matched,
 ??0EmissionVolumeInfo@FXParticleSystem@@QAE@ABV01@@Z,0x000376DC,0x005BD6C0,21,src/game/fx_particle_system.cpp,matched,copy constructor
 ??4RGBColorKeyframe@FXParticleSystem@@QAEAAU01@ABU01@@Z,0x00020770,0x0005C720,35,src/math/color.cpp,matched,copy assignment
 ??8Xfer@@UAEAAV0@AAD@Z,0x0002A2D4,0x0006B1E0,31,src/game/xfer.cpp,matched,stream char

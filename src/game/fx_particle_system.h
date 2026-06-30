@@ -242,7 +242,7 @@ public:
 class EmissionVelocityInfo {
 public:
     EmissionVelocityInfo();
-    EmissionVelocityInfo(const EmissionVelocityInfo &that);
+    __declspec(nothrow) EmissionVelocityInfo(const EmissionVelocityInfo &that);
     virtual ~EmissionVelocityInfo();
     virtual const char *GetSnapshotName();
     virtual void LoadPostProcess();
@@ -256,6 +256,8 @@ public:
     CylindricalEmissionVelocityInfo(const CylindricalEmissionVelocityInfo &that);
     virtual ~CylindricalEmissionVelocityInfo();
     CylindricalEmissionVelocityInfo &operator=(const CylindricalEmissionVelocityInfo &that);
+    GameClientRandomVariable m_var0;
+    GameClientRandomVariable m_var1;
 };
 
 class OrthoEmissionVelocityInfo : public EmissionVelocityInfo {
@@ -264,6 +266,9 @@ public:
     OrthoEmissionVelocityInfo(const OrthoEmissionVelocityInfo &that);
     virtual ~OrthoEmissionVelocityInfo();
     OrthoEmissionVelocityInfo &operator=(const OrthoEmissionVelocityInfo &that);
+    GameClientRandomVariable m_var0;
+    GameClientRandomVariable m_var1;
+    GameClientRandomVariable m_var2;
 };
 
 class OutwardEmissionVelocityInfo : public EmissionVelocityInfo {
@@ -272,6 +277,8 @@ public:
     OutwardEmissionVelocityInfo(const OutwardEmissionVelocityInfo &that);
     virtual ~OutwardEmissionVelocityInfo();
     OutwardEmissionVelocityInfo &operator=(const OutwardEmissionVelocityInfo &that);
+    GameClientRandomVariable m_var0;
+    GameClientRandomVariable m_var1;
 };
 
 class SphericalEmissionVelocityInfo : public EmissionVelocityInfo {
@@ -280,6 +287,7 @@ public:
     SphericalEmissionVelocityInfo(const SphericalEmissionVelocityInfo &that);
     virtual ~SphericalEmissionVelocityInfo();
     SphericalEmissionVelocityInfo &operator=(const SphericalEmissionVelocityInfo &that);
+    GameClientRandomVariable m_var0;
 };
 
 class LightningEmissionInfo : public EmissionVelocityInfo {
