@@ -397,3 +397,29 @@ name,export_rva,target_rva,target_size,source,status,notes
 ??1LineEmissionVolumeInfo@FXParticleSystem@@UAE@XZ,0x0002F03B,0x005D5A80,7,src/game/fx_particle_system.cpp,matched,resets vtable pointer
 ??4UnicodeString@@QAEAAV0@ABV0@@Z,0x0003E95F,0x000680A0,19,src/game/unicode_string.cpp,matched,copy assignment
 ??0?$CategoryModuleInfo@$0A@@FXParticleSystem@@QAE@ABV01@@Z,0x00019C9F,0x0005C960,9,src/game/fx_particle_system.cpp,matched,copy constructor sets vtable
+??0?$CategoryModuleInfo@$00@FXParticleSystem@@QAE@ABV01@@Z,0x000329A7,0x005BD5F0,11,src/game/fx_particle_system.cpp,matched,CategoryModuleInfo ctor/dtor
+??0?$CategoryModuleInfo@$00@FXParticleSystem@@QAE@XZ,0x00002B3F,0x005BD5E0,9,src/game/fx_particle_system.cpp,matched,CategoryModuleInfo ctor/dtor
+??0?$CategoryModuleInfo@$01@FXParticleSystem@@QAE@ABV01@@Z,0x0003541D,0x005BD920,11,src/game/fx_particle_system.cpp,matched,CategoryModuleInfo ctor/dtor
+??0?$CategoryModuleInfo@$01@FXParticleSystem@@QAE@XZ,0x00026297,0x005BD910,9,src/game/fx_particle_system.cpp,matched,CategoryModuleInfo ctor/dtor
+??0?$CategoryModuleInfo@$02@FXParticleSystem@@QAE@ABV01@@Z,0x00025C0C,0x005BD8F0,11,src/game/fx_particle_system.cpp,matched,CategoryModuleInfo ctor/dtor
+??0?$CategoryModuleInfo@$02@FXParticleSystem@@QAE@XZ,0x00015DF7,0x005BD8E0,9,src/game/fx_particle_system.cpp,matched,CategoryModuleInfo ctor/dtor
+??0?$CategoryModuleInfo@$03@FXParticleSystem@@QAE@ABV01@@Z,0x0002562B,0x005BD7E0,11,src/game/fx_particle_system.cpp,matched,CategoryModuleInfo ctor/dtor
+??0?$CategoryModuleInfo@$03@FXParticleSystem@@QAE@XZ,0x000393AB,0x005BD7D0,9,src/game/fx_particle_system.cpp,matched,CategoryModuleInfo ctor/dtor
+??0?$CategoryModuleInfo@$04@FXParticleSystem@@QAE@ABV01@@Z,0x0002FE55,0x005BD690,11,src/game/fx_particle_system.cpp,matched,CategoryModuleInfo ctor/dtor
+??0?$CategoryModuleInfo@$04@FXParticleSystem@@QAE@XZ,0x00033235,0x005BD680,9,src/game/fx_particle_system.cpp,matched,CategoryModuleInfo ctor/dtor
+??0?$CategoryModuleInfo@$05@FXParticleSystem@@QAE@ABV01@@Z,0x00042401,0x005BD620,11,src/game/fx_particle_system.cpp,matched,CategoryModuleInfo ctor/dtor
+??0?$CategoryModuleInfo@$05@FXParticleSystem@@QAE@XZ,0x0001A3AC,0x005BD610,9,src/game/fx_particle_system.cpp,matched,CategoryModuleInfo ctor/dtor
+??0?$CategoryModuleInfo@$06@FXParticleSystem@@QAE@ABV01@@Z,0x0001E62D,0x005BDB50,11,src/game/fx_particle_system.cpp,matched,CategoryModuleInfo ctor/dtor
+??0?$CategoryModuleInfo@$06@FXParticleSystem@@QAE@XZ,0x00038F91,0x005BDB40,9,src/game/fx_particle_system.cpp,matched,CategoryModuleInfo ctor/dtor
+??0?$CategoryModuleInfo@$07@FXParticleSystem@@QAE@ABV01@@Z,0x000227FA,0x0005C8F0,11,src/game/fx_particle_system.cpp,matched,CategoryModuleInfo ctor/dtor
+??0?$CategoryModuleInfo@$07@FXParticleSystem@@QAE@XZ,0x0001F933,0x0005C8E0,9,src/game/fx_particle_system.cpp,matched,CategoryModuleInfo ctor/dtor
+??0?$CategoryModuleInfo@$0A@@FXParticleSystem@@QAE@XZ,0x00014D8F,0x0005C950,9,src/game/fx_particle_system.cpp,matched,CategoryModuleInfo ctor/dtor
+??1?$CategoryModuleInfo@$00@FXParticleSystem@@IAE@XZ,0x00042B90,0x005BEFE0,7,src/game/fx_particle_system.cpp,matched,CategoryModuleInfo ctor/dtor
+??1?$CategoryModuleInfo@$01@FXParticleSystem@@IAE@XZ,0x00029D25,0x005BF030,7,src/game/fx_particle_system.cpp,matched,CategoryModuleInfo ctor/dtor
+??1?$CategoryModuleInfo@$02@FXParticleSystem@@IAE@XZ,0x00044265,0x005BF020,7,src/game/fx_particle_system.cpp,matched,CategoryModuleInfo ctor/dtor
+??1?$CategoryModuleInfo@$03@FXParticleSystem@@IAE@XZ,0x00005E39,0x005BF010,7,src/game/fx_particle_system.cpp,matched,CategoryModuleInfo ctor/dtor
+??1?$CategoryModuleInfo@$04@FXParticleSystem@@IAE@XZ,0x0001DBAB,0x005BF000,7,src/game/fx_particle_system.cpp,matched,CategoryModuleInfo ctor/dtor
+??1?$CategoryModuleInfo@$05@FXParticleSystem@@IAE@XZ,0x0001FF2D,0x005BEFF0,7,src/game/fx_particle_system.cpp,matched,CategoryModuleInfo ctor/dtor
+??1?$CategoryModuleInfo@$06@FXParticleSystem@@IAE@XZ,0x00042389,0x005BF040,7,src/game/fx_particle_system.cpp,matched,CategoryModuleInfo ctor/dtor
+??1?$CategoryModuleInfo@$07@FXParticleSystem@@IAE@XZ,0x0001B473,0x0005D810,7,src/game/fx_particle_system.cpp,matched,CategoryModuleInfo ctor/dtor
+??1?$CategoryModuleInfo@$0A@@FXParticleSystem@@IAE@XZ,0x0000D67F,0x0005D820,7,src/game/fx_particle_system.cpp,matched,CategoryModuleInfo ctor/dtor

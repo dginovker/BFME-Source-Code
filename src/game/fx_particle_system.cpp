@@ -55,10 +55,24 @@ public:
 template <int Category>
 class CategoryModuleInfo {
 public:
+    CategoryModuleInfo();
     CategoryModuleInfo(const CategoryModuleInfo &that);
-    virtual ~CategoryModuleInfo() { }
+    virtual void unusedVirtual();
     CategoryModuleInfo &operator=(const CategoryModuleInfo &that) { return *this; }
+
+protected:
+    ~CategoryModuleInfo() { }
 };
+
+template <int Category>
+void CategoryModuleInfo<Category>::unusedVirtual()
+{
+}
+
+template <int Category>
+CategoryModuleInfo<Category>::CategoryModuleInfo()
+{
+}
 
 template <int Category>
 CategoryModuleInfo<Category>::CategoryModuleInfo(const CategoryModuleInfo<Category> &that)
@@ -110,6 +124,14 @@ template CategoryModuleTemplate<4> &CategoryModuleTemplate<4>::operator=(const C
 template CategoryModuleTemplate<5> &CategoryModuleTemplate<5>::operator=(const CategoryModuleTemplate<5> &);
 template CategoryModuleTemplate<6> &CategoryModuleTemplate<6>::operator=(const CategoryModuleTemplate<6> &);
 template class CategoryModuleInfo<0>;
+template class CategoryModuleInfo<1>;
+template class CategoryModuleInfo<2>;
+template class CategoryModuleInfo<3>;
+template class CategoryModuleInfo<4>;
+template class CategoryModuleInfo<5>;
+template class CategoryModuleInfo<6>;
+template class CategoryModuleInfo<7>;
+template class CategoryModuleInfo<8>;
 template CategoryModuleInfo<0> &CategoryModuleInfo<0>::operator=(const CategoryModuleInfo<0> &);
 template CategoryModuleInfo<1> &CategoryModuleInfo<1>::operator=(const CategoryModuleInfo<1> &);
 template CategoryModuleInfo<2> &CategoryModuleInfo<2>::operator=(const CategoryModuleInfo<2> &);
