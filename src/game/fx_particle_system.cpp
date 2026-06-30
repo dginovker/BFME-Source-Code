@@ -224,6 +224,38 @@ SphereEmissionVolumeInfo::SphereEmissionVolumeInfo()
     m_radius = 0.0f;
 }
 
+BoxEmissionVolumeInfo::BoxEmissionVolumeInfo()
+{
+    m_flag = false;
+    *(void **)this = (void *)0x011109CC;
+    m_unk[0] = 0.0f;
+    m_unk[1] = 0.0f;
+    m_unk[2] = 0.0f;
+}
+
+CylinderEmissionVolumeInfo::CylinderEmissionVolumeInfo()
+{
+    m_flag = false;
+    *(void **)this = (void *)0x01110A4C;
+    m_unk[0] = 0.0f;
+    m_unk[1] = 0.0f;
+    m_unk[2] = 0.0f;
+    m_unk[3] = 0.0f;
+    m_unk[4] = 0.0f;
+}
+
+LineEmissionVolumeInfo::LineEmissionVolumeInfo()
+{
+    m_flag = false;
+    *(void **)this = (void *)0x0111098C;
+    m_unk[0] = 0.0f;
+    m_unk[1] = 0.0f;
+    m_unk[2] = 0.0f;
+    m_unk[3] = 0.0f;
+    m_unk[4] = 0.0f;
+    m_unk[5] = 0.0f;
+}
+
 template <int Category, int SubCategory = 1>
 class CategoryModuleClassBase {
 public:

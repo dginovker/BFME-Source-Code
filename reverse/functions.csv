@@ -582,3 +582,6 @@ name,export_rva,target_rva,target_size,source,status,notes
 ?isNotNone@?$StringBase@D@@QBE_NXZ,0x00888AE0,0x00888AE0,32,src/game/string_base.cpp,matched,returns true if string is not the global none string
 ?isNotNone@?$StringBase@G@@QBE_NXZ,0x00888B30,0x00888B30,32,src/game/string_base.cpp,matched,returns true if wide string is not the global none string
 ?compare@?$StringBase@D@@QBEHPBD@Z,0x0004B01A,0x0004B01A,10,src/game/string_base.cpp,matched,compare with C string via internal helper
+??0BoxEmissionVolumeInfo@FXParticleSystem@@QAE@XZ,0x0001A78F,0x005D5E00,23,src/game/fx_particle_system.cpp,matched,default constructor sets vtable and zeros box half-extents
+??0CylinderEmissionVolumeInfo@FXParticleSystem@@QAE@XZ,0x000223A4,0x005D63F0,29,src/game/fx_particle_system.cpp,matched,default constructor sets vtable and zeros cylinder fields
+??0LineEmissionVolumeInfo@FXParticleSystem@@QAE@XZ,0x0003656B,0x005D5A50,32,src/game/fx_particle_system.cpp,matched,default constructor sets vtable and zeros line endpoints

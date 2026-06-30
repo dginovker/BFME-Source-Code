@@ -251,7 +251,11 @@ public:
 
 class BoxEmissionVolumeInfo : public EmissionVolumeInfo {
 public:
+    BoxEmissionVolumeInfo();
     virtual ~BoxEmissionVolumeInfo();
+
+private:
+    float m_unk[3];
 };
 
 class SphereEmissionVolumeInfo : public EmissionVolumeInfo {
@@ -265,13 +269,21 @@ private:
 
 class CylinderEmissionVolumeInfo : public EmissionVolumeInfo {
 public:
+    CylinderEmissionVolumeInfo();
     virtual ~CylinderEmissionVolumeInfo();
+
+private:
+    float m_unk[5];
 };
 
 class LineEmissionVolumeInfo : public EmissionVolumeInfo {
 public:
+    LineEmissionVolumeInfo();
     LineEmissionVolumeInfo &operator=(const LineEmissionVolumeInfo &that);
     virtual ~LineEmissionVolumeInfo();
+
+private:
+    float m_unk[6];
 };
 
 class LifeEventModuleInfo {
