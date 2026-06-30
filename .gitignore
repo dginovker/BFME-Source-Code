@@ -7,3 +7,5 @@ build/toolchains/*
 __pycache__/
 *.pyc
 reverse/exports.csv
+reverse/ghidra_functions.csv
+reverse/string_xrefs.tsv

@@ -16,10 +16,9 @@ Leaf functions (no calls) are easiest; `reverse/symbols.csv` is what makes call-
 
 ## Reference source
 
-BFME is the SAGE engine — its original source largely survives in C&C Generals
-(`github.com/electronicarts/CnC_Generals_Zero_Hour`, GPL). Many functions match it verbatim.
-Use it as a guide, reconcile against the binary (the source of truth), and do **not** copy GPL
-source into this repo. Clone it under `reference/` (gitignored).
+BFME is the SAGE engine — its original source largely survives in C&C Generals, vendored under
+`reference/CnC_Generals_Zero_Hour/` (GPLv3, same license as this repo). Many functions match it
+verbatim. Use it as a guide and reconcile against the binary (the source of truth).
 
 For exact function sizes, the full function inventory, and the bulk-port pipeline, see
 `tools/ghidra/README.md`.
