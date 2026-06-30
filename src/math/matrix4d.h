@@ -30,6 +30,7 @@ public:
         float m20, float m21, float m22, float m23,
         float m30, float m31, float m32, float m33);
     Matrix4D &SetIdentity();
+    Matrix4D &Set(const Coord3D &translation);
 
     bool IsExactlyEqualTo(const Matrix4D &that);
 

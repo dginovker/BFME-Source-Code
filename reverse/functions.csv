@@ -565,3 +565,4 @@ name,export_rva,target_rva,target_size,source,status,notes
 ?staticInitModules@FXParticleSystem@@YAXXZ,0x0000261C,0x005EB400,125,src/game/fx_particle_system.cpp,matched,initializes all module category static data
 ?clear@?$StringBase@D@@QAEXXZ,0x00041A38,0x000680C0,6,src/game/string_base.cpp,matched,clears string by releasing buffer
 ?clear@?$StringBase@G@@QAEXXZ,0x00024C85,0x00068090,6,src/game/string_base.cpp,matched,clears wide string by releasing buffer
+?Set@Matrix4D@@QAEAAV1@ABVCoord3D@@@Z,0x0003670F,0x007E6150,78,src/math/matrix4d.cpp,matched,set matrix to identity with translation vector
