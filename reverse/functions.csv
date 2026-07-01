@@ -980,6 +980,7 @@ name,export_rva,target_rva,target_size,source,status,notes
 ?readUnicodeString@RecorderClass@@IAE?AVUnicodeString@@XZ,0x000383D4,0x991f0,34,src/game/recorder_strings.cpp,matched,
 ?readNextFrame@RecorderClass@@IAEXXZ,0x0000A2D1,0x98730,97,src/game/recorder_strings.cpp,matched,
 ?readArgument@RecorderClass@@IAEXW4GameMessageArgumentDataType@@PAVGameMessage@@@Z,0x0000139D,0x97500,520,src/game/recorder_strings.cpp,matched,
+?appendNextCommand@RecorderClass@@IAEXXZ,0x0003D0F0,0x987b0,533,src/game/recorder_strings.cpp,matched,
 ?tintAllColors@DefaultColorModuleInfo@FXParticleSystem@@QAEXH@Z,0x0002C228,0x5ef6c0,283,src/game/fx_particle_system_bulk.cpp,matched,
 ?writeINI@ParticleSystemTemplate@FXParticleSystem@@QBEXAAVFile@@I@Z,0x0003ACB5,0x5ccab0,1568,src/game/fx_particle_system_bulk.cpp,matched,
 ?DoXfer@ButterflyDrawModuleInfo@FXParticleSystem@@UAEXAAVXfer@@@Z,0x0003967B,0x5f0c70,27,src/game/fx_particle_system_bulk.cpp,matched,

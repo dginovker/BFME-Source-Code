@@ -21,6 +21,10 @@ __stringbase_isnone_cmp_char,0x00405E8,internal char string none-comparison help
 ?appendPixelRegionArgument@GameMessage@@QAEXABUIRegion2D@@@Z,0x00011DCE,GameMessage::appendPixelRegionArgument thunk
 ?appendTimestampArgument@GameMessage@@QAEXI@Z,0x0000D558,GameMessage::appendTimestampArgument thunk
 ?appendWideCharArgument@GameMessage@@QAEXABG@Z,0x000028C9,GameMessage::appendWideCharArgument thunk
+??2@YAPAXI@Z,0x00881F30,operator new body
+??0GameMessage@@QAE@W4Type@0@@Z,0x000359E5,GameMessage::GameMessage(Type) thunk
+??0GameMessageParser@@QAE@XZ,0x00013FCA,GameMessageParser::GameMessageParser() thunk
+?addArgType@GameMessageParser@@QAEXW4GameMessageArgumentDataType@@H@Z,0x0000B569,GameMessageParser::addArgType thunk
 __stringbase_isnone_cmp_wchar,0x0041F3D,internal wide-char string none-comparison helper
 __stringbase_isnotnone_cmp_char,0x00405E8,internal char string not-none comparison helper
 __stringbase_isnotnone_cmp_wchar,0x0041F3D,internal wide-char string not-none comparison helper

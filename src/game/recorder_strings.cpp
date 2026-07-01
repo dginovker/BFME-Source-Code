@@ -96,6 +96,14 @@ enum GameMessageArgumentDataType {
 
 class GameMessage {
 public:
+    enum Type {
+        MSG_CLEAR_GAME_DATA = 0x1d,
+        MSG_BEGIN_NETWORK_MESSAGES = 0x3e8
+    };
+
+    GameMessage(Type type);
+    virtual ~GameMessage();
+
     void appendIntegerArgument(int arg);
     void appendRealArgument(float arg);
     void appendBooleanArgument(bool arg);
@@ -107,6 +115,60 @@ public:
     void appendPixelRegionArgument(const IRegion2D &arg);
     void appendTimestampArgument(unsigned int arg);
     void appendWideCharArgument(const wchar_t &arg);
+    void friend_setPlayerIndex(int i) { m_playerIndex = i; }
+
+private:
+    GameMessage *m_next;
+    GameMessage *m_prev;
+    void *m_list;
+    Type m_type;
+    int m_playerIndex;
+    int m_frame;
+    int m_argCount;
+    void *m_argList;
+};
+
+class CommandList {
+public:
+    virtual void v0();
+    virtual void v1();
+    virtual void v2();
+    virtual void v3();
+    virtual void v4();
+    virtual void v5();
+    virtual void v6();
+    virtual void v7();
+    virtual void v8();
+    virtual void appendMessage(GameMessage *msg);
+};
+
+extern CommandList *TheCommandList;
+
+class GameMessageParserArgumentType {
+public:
+    virtual ~GameMessageParserArgumentType();
+    GameMessageParserArgumentType *getNext() { return m_next; }
+    GameMessageArgumentDataType getType() { return m_type; }
+    int getArgCount() { return m_argCount; }
+
+private:
+    GameMessageParserArgumentType *m_next;
+    GameMessageArgumentDataType m_type;
+    int m_argCount;
+};
+
+class GameMessageParser {
+public:
+    GameMessageParser();
+    virtual ~GameMessageParser();
+
+    GameMessageParserArgumentType *getFirstArgumentType() { return m_first; }
+    void addArgType(GameMessageArgumentDataType type, int argCount);
+
+private:
+    GameMessageParserArgumentType *m_first;
+    GameMessageParserArgumentType *m_last;
+    int m_argTypeCount;
 };
 
 class RecorderClass {
@@ -114,6 +176,7 @@ protected:
     AsciiString readAsciiString();
     UnicodeString readUnicodeString();
     void readNextFrame();
+    void appendNextCommand();
     void readArgument(GameMessageArgumentDataType type, GameMessage *msg);
 
 private:
@@ -222,4 +285,75 @@ void RecorderClass::readArgument(GameMessageArgumentDataType type, GameMessage *
         fread(&theid, sizeof(theid), 1, m_file);
         msg->appendWideCharArgument(theid);
     }
+}
+
+void RecorderClass::appendNextCommand()
+{
+    GameMessage::Type type;
+    int retcode = fread(&type, sizeof(type), 1, m_file);
+    if (retcode != 1) {
+        return;
+    }
+
+    GameMessage *msg = new GameMessage(type);
+    if (type != GameMessage::MSG_BEGIN_NETWORK_MESSAGES && type != GameMessage::MSG_CLEAR_GAME_DATA) {
+        if (!m_doingAnalysis) {
+            TheCommandList->appendMessage(msg);
+        }
+    }
+
+    int playerIndex = -1;
+    fread(&playerIndex, sizeof(playerIndex), 1, m_file);
+    msg->friend_setPlayerIndex(playerIndex);
+
+    unsigned char numTypes = 0;
+    int totalArgs = 0;
+    fread(&numTypes, sizeof(numTypes), 1, m_file);
+
+    GameMessageParser *parser = new GameMessageParser;
+    for (unsigned char i = 0; i < numTypes; ++i) {
+        unsigned char type = ARGUMENTDATATYPE_UNKNOWN;
+        fread(&type, sizeof(type), 1, m_file);
+        unsigned char numArgs = 0;
+        fread(&numArgs, sizeof(numArgs), 1, m_file);
+        parser->addArgType((GameMessageArgumentDataType)type, numArgs);
+        totalArgs += numArgs;
+    }
+
+    GameMessageParserArgumentType *parserArgType = parser->getFirstArgumentType();
+    GameMessageArgumentDataType lasttype = ARGUMENTDATATYPE_UNKNOWN;
+    int argsLeftForType = 0;
+    if (parserArgType != 0) {
+        lasttype = parserArgType->getType();
+        argsLeftForType = parserArgType->getArgCount();
+    }
+
+    for (int j = 0; j < totalArgs; ++j) {
+        readArgument(lasttype, msg);
+
+        --argsLeftForType;
+        if (argsLeftForType == 0) {
+            if (parserArgType == 0) {
+                return;
+            }
+
+            parserArgType = parserArgType->getNext();
+            if (parserArgType != 0) {
+                argsLeftForType = parserArgType->getArgCount();
+                lasttype = parserArgType->getType();
+            }
+        }
+    }
+
+    if (type == GameMessage::MSG_CLEAR_GAME_DATA || type == GameMessage::MSG_BEGIN_NETWORK_MESSAGES) {
+        delete msg;
+        msg = 0;
+    }
+
+    if (m_doingAnalysis) {
+        delete msg;
+        msg = 0;
+    }
+
+    delete parser;
 }
