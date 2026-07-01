@@ -49,7 +49,7 @@ def verify_baseline():
         manifest = json.load(handle)
 
     baseline_dir = MANIFEST.parent
-    print(f"Baseline: {manifest['id']}")
+    verified = 0
 
     for entry in manifest["files"]:
         path = baseline_dir / entry["path"]
@@ -68,7 +68,9 @@ def verify_baseline():
         if md5 != entry["md5"]:
             raise SystemExit(f"{entry['path']}: md5 mismatch")
 
-        print(f"  OK {entry['path']}")
+        verified += 1
+
+    print(f"Baseline: OK {verified} file(s) ({manifest['id']})")
 
 
 def pe_sections(data):
@@ -360,9 +362,9 @@ def verify_functions(only=None):
         rows = [row for row in rows if any(sel in row["source"] or sel in row["name"] for sel in only)]
         if not rows:
             raise SystemExit("no functions match: " + ", ".join(only))
+    total = len(rows)
     symbol_map = load_symbol_map()
 
-    print("Functions:")
     failures = 0
     patches = []
     source_outputs = {}
@@ -378,7 +380,6 @@ def verify_functions(only=None):
         compiled = patch["bytes"]
 
         if compiled == target:
-            print(f"  OK {row['name']} ({row['source']})")
             patches.append(patch)
             continue
 
@@ -391,8 +392,17 @@ def verify_functions(only=None):
         print(f"    compiled: {format_bytes(compiled)}")
 
     if failures:
+        print(f"Functions: FAIL {failures}/{total}")
         print(f"{failures} function(s) failed byte comparison")
         raise SystemExit(1)
+
+    source_count = len({row["source"] for row in rows})
+    if total == 1:
+        row = rows[0]
+        print(f"Functions: OK 1/1 matched")
+        print(f"  {row['name']} ({row['source']})")
+    else:
+        print(f"Functions: OK {total}/{total} matched across {source_count} source file(s)")
 
     return patches
 
@@ -424,12 +434,11 @@ def verify_noop_patch(patches):
     original_sha256 = hash_file(EXE, "sha256")
     patched_sha256 = hash_file(NOOP_EXE, "sha256")
 
-    print("No-op patch:")
     if patched_sha256 != original_sha256:
         raise SystemExit(
-            f"  FAIL {NOOP_EXE.relative_to(ROOT)} sha256 {patched_sha256} != {original_sha256}"
+            f"No-op patch: FAIL {NOOP_EXE.relative_to(ROOT)} sha256 {patched_sha256} != {original_sha256}"
         )
-    print(f"  OK {NOOP_EXE.relative_to(ROOT)}")
+    print(f"No-op patch: OK {NOOP_EXE.relative_to(ROOT)}")
 
 
 def main(only=None):
@@ -439,8 +448,7 @@ def main(only=None):
         # iterate; run with no arguments for the full check before committing.
         verify_functions(only)
         return
-    print("Full verification. While iterating, check one file in seconds:")
-    print("  ./build.sh <source-or-function>   e.g. ./build.sh src/math/color.cpp\n")
+    print("Full verification")
     verify_baseline()
     patches = verify_functions()
     verify_noop_patch(patches)
