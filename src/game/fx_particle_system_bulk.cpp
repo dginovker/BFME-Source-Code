@@ -24469,26 +24469,10 @@ __declspec(naked) DefaultUpdateModuleInfo &DefaultUpdateModuleInfo::operator=(co
     }
 }
 
-// ??4EmissionVolumeInfo@FXParticleSystem@@QAEAAV01@ABV01@@Z
-__declspec(naked) EmissionVolumeInfo &EmissionVolumeInfo::operator=(const EmissionVolumeInfo &that)
+EmissionVolumeInfo &EmissionVolumeInfo::operator=(const EmissionVolumeInfo &that)
 {
-    __asm {
-        __emit 0x8b
-        __emit 0xc1
-        __emit 0x8b
-        __emit 0x4c
-        __emit 0x24
-        __emit 0x04
-        __emit 0x8a
-        __emit 0x51
-        __emit 0x04
-        __emit 0x88
-        __emit 0x50
-        __emit 0x04
-        __emit 0xc2
-        __emit 0x04
-        __emit 0x00
-    }
+    m_flag = that.m_flag;
+    return *this;
 }
 
 // ??4HemisphericalEmissionVelocityModuleTemplate@FXParticleSystem@@QAEAAV01@ABV01@@Z
@@ -26315,32 +26299,11 @@ __declspec(naked) RenderObjectUpdateModuleTemplate &RenderObjectUpdateModuleTemp
     }
 }
 
-// ??4SphereEmissionVolumeInfo@FXParticleSystem@@QAEAAV01@ABV01@@Z
-__declspec(naked) SphereEmissionVolumeInfo &SphereEmissionVolumeInfo::operator=(const SphereEmissionVolumeInfo &that)
+SphereEmissionVolumeInfo &SphereEmissionVolumeInfo::operator=(const SphereEmissionVolumeInfo &that)
 {
-    __asm {
-        __emit 0x8b
-        __emit 0xc1
-        __emit 0x8b
-        __emit 0x4c
-        __emit 0x24
-        __emit 0x04
-        __emit 0x8a
-        __emit 0x51
-        __emit 0x04
-        __emit 0x88
-        __emit 0x50
-        __emit 0x04
-        __emit 0x8b
-        __emit 0x49
-        __emit 0x08
-        __emit 0x89
-        __emit 0x48
-        __emit 0x08
-        __emit 0xc2
-        __emit 0x04
-        __emit 0x00
-    }
+    m_flag = that.m_flag;
+    m_radius = that.m_radius;
+    return *this;
 }
 
 // ??4SphereEmissionVolumeModuleTemplate@FXParticleSystem@@QAEAAV01@ABV01@@Z
