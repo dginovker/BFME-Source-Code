@@ -9006,110 +9006,24 @@ __declspec(naked) bool operator==(const StringBase<char> &left, const char *righ
     }
 }
 
-__declspec(naked) bool operator==(const StringBase<char> &left, const StringBase<char> &right)
+bool operator==(const StringBase<char> &left, const StringBase<char> &right)
 {
-    __asm {
-        __emit 0x8b
-        __emit 0x44
-        __emit 0x24
-        __emit 0x08
-        __emit 0x8b
-        __emit 0x4c
-        __emit 0x24
-        __emit 0x04
-        __emit 0x50
-        __emit 0xe8
-        __emit 0xc7
-        __emit 0x20
-        __emit 0xfa
-        __emit 0xff
-        __emit 0xf7
-        __emit 0xd8
-        __emit 0x1b
-        __emit 0xc0
-        __emit 0x40
-        __emit 0xc3
-    }
+    return left.compare(right) == 0;
 }
 
-__declspec(naked) bool operator==(const StringBase<wchar_t> &left, const StringBase<wchar_t> &right)
+bool operator==(const StringBase<wchar_t> &left, const StringBase<wchar_t> &right)
 {
-    __asm {
-        __emit 0x8b
-        __emit 0x44
-        __emit 0x24
-        __emit 0x08
-        __emit 0x8b
-        __emit 0x4c
-        __emit 0x24
-        __emit 0x04
-        __emit 0x50
-        __emit 0xe8
-        __emit 0x3e
-        __emit 0x1f
-        __emit 0xfc
-        __emit 0xff
-        __emit 0xf7
-        __emit 0xd8
-        __emit 0x1b
-        __emit 0xc0
-        __emit 0x40
-        __emit 0xc3
-    }
+    return left.compare(right) == 0;
 }
 
-__declspec(naked) bool operator!=(const StringBase<char> &left, const StringBase<char> &right)
+bool operator!=(const StringBase<char> &left, const StringBase<char> &right)
 {
-    __asm {
-        __emit 0x8b
-        __emit 0x44
-        __emit 0x24
-        __emit 0x08
-        __emit 0x8b
-        __emit 0x4c
-        __emit 0x24
-        __emit 0x04
-        __emit 0x50
-        __emit 0xe8
-        __emit 0x67
-        __emit 0xe3
-        __emit 0xf7
-        __emit 0xff
-        __emit 0xf7
-        __emit 0xd8
-        __emit 0x1b
-        __emit 0xc0
-        __emit 0xf7
-        __emit 0xd8
-        __emit 0xc3
-    }
+    return left.compare(right) != 0;
 }
 
-__declspec(naked) bool operator!=(const StringBase<wchar_t> &left, const StringBase<wchar_t> &right)
+bool operator!=(const StringBase<wchar_t> &left, const StringBase<wchar_t> &right)
 {
-    __asm {
-        __emit 0x8b
-        __emit 0x44
-        __emit 0x24
-        __emit 0x08
-        __emit 0x8b
-        __emit 0x4c
-        __emit 0x24
-        __emit 0x04
-        __emit 0x50
-        __emit 0xe8
-        __emit 0xae
-        __emit 0x71
-        __emit 0xf8
-        __emit 0xff
-        __emit 0xf7
-        __emit 0xd8
-        __emit 0x1b
-        __emit 0xc0
-        __emit 0xf7
-        __emit 0xd8
-        __emit 0xc3
-    }
+    return left.compare(right) != 0;
 }
 
 __declspec(naked) Debug &operator<<(Debug &debug, const StringBase<char> &str)
