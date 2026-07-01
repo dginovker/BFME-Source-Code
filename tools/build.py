@@ -166,9 +166,9 @@ def read_object_symbol_bytes(path, symbol_name):
     index = 0
     while index < len(symbols):
         symbol = symbols[index]
-        if symbol["name"] == symbol_name:
-            if symbol["section"] <= 0:
-                raise ValueError(f"{symbol_name} is not defined in a section")
+        # the same name can appear as a sectionless entry (e.g. weak external)
+        # before its real definition; keep scanning for the defined one
+        if symbol["name"] == symbol_name and symbol["section"] > 0:
             section = sections[symbol["section"] - 1]
             value = symbol["value"]
             start = section["raw_pointer"] + value
