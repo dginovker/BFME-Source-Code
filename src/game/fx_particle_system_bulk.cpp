@@ -8237,17 +8237,9 @@ __declspec(naked) ConcreteModuleClass<OrthoEmissionVelocityModuleTag>::ConcreteM
 }
 
 // ??1?$ConcreteModuleClass@UOrthoEmissionVelocityModuleTag@FXParticleSystem@@@FXParticleSystem@@QAE@XZ
-__declspec(naked) ConcreteModuleClass<OrthoEmissionVelocityModuleTag>::~ConcreteModuleClass()
+ConcreteModuleClass<OrthoEmissionVelocityModuleTag>::~ConcreteModuleClass()
 {
-    __asm {
-        __emit 0xc7
-        __emit 0x01
-        __emit 0x80
-        __emit 0x08
-        __emit 0x11
-        __emit 0x01
-        __emit 0xc3
-    }
+    *(const void **)this = (const void *)0x01110880;
 }
 
 // ?createTemplate@?$ConcreteModuleClass@UOrthoEmissionVelocityModuleTag@FXParticleSystem@@@FXParticleSystem@@UBEPAVOrthoEmissionVelocityModuleTemplate@2@PAVINI@@@Z
