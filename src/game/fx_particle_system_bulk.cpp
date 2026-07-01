@@ -24431,55 +24431,10 @@ SphereEmissionVolumeInfo &SphereEmissionVolumeInfo::operator=(const SphereEmissi
 }
 
 // ??4SphereEmissionVolumeModuleTemplate@FXParticleSystem@@QAEAAV01@ABV01@@Z
-__declspec(naked) SphereEmissionVolumeModuleTemplate &SphereEmissionVolumeModuleTemplate::operator=(const SphereEmissionVolumeModuleTemplate &that)
+SphereEmissionVolumeModuleTemplate &SphereEmissionVolumeModuleTemplate::operator=(const SphereEmissionVolumeModuleTemplate &that)
 {
-    __asm {
-        __emit 0x8b
-        __emit 0xc1
-        __emit 0x8b
-        __emit 0x4c
-        __emit 0x24
-        __emit 0x04
-        __emit 0x85
-        __emit 0xc9
-        __emit 0x74
-        __emit 0x12
-        __emit 0x8d
-        __emit 0x51
-        __emit 0x08
-        __emit 0x8a
-        __emit 0x4a
-        __emit 0x04
-        __emit 0x88
-        __emit 0x48
-        __emit 0x0c
-        __emit 0x8b
-        __emit 0x52
-        __emit 0x08
-        __emit 0x89
-        __emit 0x50
-        __emit 0x10
-        __emit 0xc2
-        __emit 0x04
-        __emit 0x00
-        __emit 0x33
-        __emit 0xd2
-        __emit 0x8a
-        __emit 0x4a
-        __emit 0x04
-        __emit 0x88
-        __emit 0x48
-        __emit 0x0c
-        __emit 0x8b
-        __emit 0x52
-        __emit 0x08
-        __emit 0x89
-        __emit 0x50
-        __emit 0x10
-        __emit 0xc2
-        __emit 0x04
-        __emit 0x00
-    }
+    SphereEmissionVolumeInfo::operator=(that);
+    return *this;
 }
 
 SphericalEmissionVelocityInfo &SphericalEmissionVelocityInfo::operator=(const SphericalEmissionVelocityInfo &that)
