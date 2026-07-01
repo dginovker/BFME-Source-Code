@@ -62,11 +62,59 @@ public:
 
 extern MessageStream *TheMessageStream;
 
+struct Coord3D {
+    float x;
+    float y;
+    float z;
+};
+
+struct ICoord2D {
+    int x;
+    int y;
+};
+
+struct IRegion2D {
+    ICoord2D lo;
+    ICoord2D hi;
+};
+
+enum GameMessageArgumentDataType {
+    ARGUMENTDATATYPE_INTEGER,
+    ARGUMENTDATATYPE_REAL,
+    ARGUMENTDATATYPE_BOOLEAN,
+    ARGUMENTDATATYPE_OBJECTID,
+    ARGUMENTDATATYPE_DRAWABLEID,
+    ARGUMENTDATATYPE_TEAMID,
+    ARGUMENTDATATYPE_SQUADID,
+    ARGUMENTDATATYPE_LOCATION,
+    ARGUMENTDATATYPE_PIXEL,
+    ARGUMENTDATATYPE_PIXELREGION,
+    ARGUMENTDATATYPE_TIMESTAMP,
+    ARGUMENTDATATYPE_WIDECHAR,
+    ARGUMENTDATATYPE_UNKNOWN
+};
+
+class GameMessage {
+public:
+    void appendIntegerArgument(int arg);
+    void appendRealArgument(float arg);
+    void appendBooleanArgument(bool arg);
+    void appendObjectIDArgument(unsigned int arg);
+    void appendDrawableIDArgument(unsigned int arg);
+    void appendTeamIDArgument(unsigned int arg);
+    void appendLocationArgument(const Coord3D &arg);
+    void appendPixelArgument(const ICoord2D &arg);
+    void appendPixelRegionArgument(const IRegion2D &arg);
+    void appendTimestampArgument(unsigned int arg);
+    void appendWideCharArgument(const wchar_t &arg);
+};
+
 class RecorderClass {
 protected:
     AsciiString readAsciiString();
     UnicodeString readUnicodeString();
     void readNextFrame();
+    void readArgument(GameMessageArgumentDataType type, GameMessage *msg);
 
 private:
     int m_padding0;
@@ -124,5 +172,54 @@ void RecorderClass::readNextFrame()
         if (!m_doingAnalysis) {
             TheMessageStream->appendMessage(0x1d);
         }
+    }
+}
+
+void RecorderClass::readArgument(GameMessageArgumentDataType type, GameMessage *msg)
+{
+    if (type == ARGUMENTDATATYPE_INTEGER) {
+        int theint;
+        fread(&theint, sizeof(theint), 1, m_file);
+        msg->appendIntegerArgument(theint);
+    } else if (type == ARGUMENTDATATYPE_REAL) {
+        float thereal;
+        fread(&thereal, sizeof(thereal), 1, m_file);
+        msg->appendRealArgument(thereal);
+    } else if (type == ARGUMENTDATATYPE_BOOLEAN) {
+        bool thebool;
+        fread(&thebool, sizeof(thebool), 1, m_file);
+        msg->appendBooleanArgument(thebool);
+    } else if (type == ARGUMENTDATATYPE_OBJECTID) {
+        unsigned int theid;
+        fread(&theid, sizeof(theid), 1, m_file);
+        msg->appendObjectIDArgument(theid);
+    } else if (type == ARGUMENTDATATYPE_DRAWABLEID) {
+        unsigned int theid;
+        fread(&theid, sizeof(theid), 1, m_file);
+        msg->appendDrawableIDArgument(theid);
+    } else if (type == ARGUMENTDATATYPE_TEAMID) {
+        unsigned int theid;
+        fread(&theid, sizeof(theid), 1, m_file);
+        msg->appendTeamIDArgument(theid);
+    } else if (type == ARGUMENTDATATYPE_LOCATION) {
+        Coord3D loc;
+        fread(&loc, sizeof(loc), 1, m_file);
+        msg->appendLocationArgument(loc);
+    } else if (type == ARGUMENTDATATYPE_PIXEL) {
+        ICoord2D pixel;
+        fread(&pixel, sizeof(pixel), 1, m_file);
+        msg->appendPixelArgument(pixel);
+    } else if (type == ARGUMENTDATATYPE_PIXELREGION) {
+        IRegion2D reg;
+        fread(&reg, sizeof(reg), 1, m_file);
+        msg->appendPixelRegionArgument(reg);
+    } else if (type == ARGUMENTDATATYPE_TIMESTAMP) {
+        unsigned int stamp;
+        fread(&stamp, sizeof(stamp), 1, m_file);
+        msg->appendTimestampArgument(stamp);
+    } else if (type == ARGUMENTDATATYPE_WIDECHAR) {
+        wchar_t theid;
+        fread(&theid, sizeof(theid), 1, m_file);
+        msg->appendWideCharArgument(theid);
     }
 }

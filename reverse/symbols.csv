@@ -10,6 +10,17 @@ __stringbase_isnone_cmp_char,0x00405E8,internal char string none-comparison help
 ?getPath_UserData@GlobalData@@QBE?AVAsciiString@@XZ,0x000106EA,GlobalData::getPath_UserData thunk
 ?releaseBuffer@?$StringBase@D@@AAEXXZ,0x00887940,StringBase<char>::releaseBuffer body
 ?readUnicodeString@@YA?AVUnicodeString@@PAU_iobuf@@@Z,0x000322F4,shared replay Unicode string reader thunk
+?appendIntegerArgument@GameMessage@@QAEXH@Z,0x00001370,GameMessage::appendIntegerArgument thunk
+?appendRealArgument@GameMessage@@QAEXM@Z,0x00002608,GameMessage::appendRealArgument thunk
+?appendBooleanArgument@GameMessage@@QAEX_N@Z,0x000032AB,GameMessage::appendBooleanArgument thunk
+?appendObjectIDArgument@GameMessage@@QAEXI@Z,0x0002BCEC,GameMessage::appendObjectIDArgument thunk
+?appendDrawableIDArgument@GameMessage@@QAEXI@Z,0x000154BF,GameMessage::appendDrawableIDArgument thunk
+?appendTeamIDArgument@GameMessage@@QAEXI@Z,0x0000C522,GameMessage::appendTeamIDArgument thunk
+?appendLocationArgument@GameMessage@@QAEXABUCoord3D@@@Z,0x00037AD8,GameMessage::appendLocationArgument thunk
+?appendPixelArgument@GameMessage@@QAEXABUICoord2D@@@Z,0x0002EA41,GameMessage::appendPixelArgument thunk
+?appendPixelRegionArgument@GameMessage@@QAEXABUIRegion2D@@@Z,0x00011DCE,GameMessage::appendPixelRegionArgument thunk
+?appendTimestampArgument@GameMessage@@QAEXI@Z,0x0000D558,GameMessage::appendTimestampArgument thunk
+?appendWideCharArgument@GameMessage@@QAEXABG@Z,0x000028C9,GameMessage::appendWideCharArgument thunk
 __stringbase_isnone_cmp_wchar,0x0041F3D,internal wide-char string none-comparison helper
 __stringbase_isnotnone_cmp_char,0x00405E8,internal char string not-none comparison helper
 __stringbase_isnotnone_cmp_wchar,0x0041F3D,internal wide-char string not-none comparison helper
