@@ -11,7 +11,7 @@ name,export_rva,target_rva,target_size,source,status,notes
 ??0Coord3D@@QAE@HHH@Z,0x0003AE04,0x00064310,25,src/math/coord3d.cpp,matched,converts ints to floats
 ??0Coord3D@@QAE@MMM@Z,0x000156C7,0x000642F0,25,src/math/coord3d.cpp,matched,sets x/y/z from floats
 ??0Coord3D@@QAE@XZ,0x00016C93,0x00083330,3,src/math/coord3d.cpp,matched,empty constructor returns self
-??0GameClientRandomVariable@@QAE@XZ,0x0002466D,0x0005C5D0,13,src/game/fx_particle_system.cpp,matched,initializes distribution/minimum/maximum to zero (inlined; emitted where used)
+??0GameClientRandomVariable@@QAE@XZ,0x0002466D,0x0005C5D0,13,src/game/fx_particle_system_bulk.cpp,matched,initializes distribution/minimum/maximum to zero (inlined; emitted where used)
 ??0ICoord2D@@QAE@ABUICoord2DBase@@@Z,0x00001EB0,0x0008AA60,19,src/math/icoord.cpp,matched,copies x/y from ICoord2DBase
 ??0ICoord2D@@QAE@HH@Z,0x000160D6,0x00106690,18,src/math/icoord.cpp,matched,sets x/y from ints
 ??0ICoord2D@@QAE@XZ,0x00039130,0x00083360,3,src/math/icoord.cpp,matched,empty constructor returns self
@@ -29,11 +29,15 @@ name,export_rva,target_rva,target_size,source,status,notes
 ??0Region2D@@QAE@XZ,0x0001DFB1,0x00160B10,3,src/math/region.cpp,matched,empty constructor returns self
 ??0Region3D@@QAE@ABU0@@Z,0x00032E02,0x000BEC90,43,src/math/region.cpp,matched,copies bounds
 ??0Region3D@@QAE@XZ,0x00024573,0x000BEC80,3,src/math/region.cpp,matched,empty constructor returns self
-??0RGBColorKeyframe@FXParticleSystem@@QAE@XZ,0x00029677,0x0005C700,16,src/math/color.cpp,matched,sets channels and frame to zero
+??0RGBColorKeyframe@FXParticleSystem@@QAE@XZ,0x00029677,0x0005C700,16,src/game/fx_particle_system_bulk.cpp,matched,sets channels and frame to zero
 ??0AsciiString@@QAE@XZ,0x00017BD9,0x00062030,9,src/game/ascii_string.cpp,matched,default constructor sets text pointer to null
 ??0QuadDrawModuleInfo@FXParticleSystem@@QAE@XZ,0x00015C4E,0x005F5450,9,src/game/fx_particle_system.cpp,matched,default constructor sets vtable pointer
-??0RandomAlphaKeyframe@FXParticleSystem@@QAE@XZ,0x0003F107,0x0005C750,45,src/game/fx_particle_system.cpp,matched,constructs keyframe and calls setRange on its random variable
+??0RandomAlphaKeyframe@FXParticleSystem@@QAE@XZ,0x0003F107,0x0005C750,45,src/game/fx_particle_system_bulk.cpp,matched,constructs keyframe and calls setRange on its random variable
 ??1DefaultAlphaModuleInfo@FXParticleSystem@@UAE@XZ,0x0001AFAF,0x005D4F50,7,src/game/fx_particle_system.cpp,matched,destructor resets vtable pointer
+??0DefaultAlphaModuleInfo@FXParticleSystem@@QAE@ABV01@@Z,0x0001E04C,0x005D4F60,32,src/game/fx_particle_system_bulk.cpp,matched,
+??0DefaultAlphaModuleInfo@FXParticleSystem@@QAE@XZ,0x00045D04,0x005EE4C0,102,src/game/fx_particle_system_bulk.cpp,matched,
+??0DefaultColorModuleInfo@FXParticleSystem@@QAE@ABV01@@Z,0x000354F4,0x005D52E0,60,src/game/fx_particle_system_bulk.cpp,matched,
+??0DefaultColorModuleInfo@FXParticleSystem@@QAE@XZ,0x0003832F,0x005EF600,147,src/game/fx_particle_system_bulk.cpp,matched,
 ??1QuadDrawModuleInfo@FXParticleSystem@@UAE@XZ,0x0001C5CB,0x005D88A0,7,src/game/fx_particle_system.cpp,matched,destructor resets vtable pointer
 ??0EmissionVelocityInfo@FXParticleSystem@@QAE@XZ,0x00012468,0x005BD800,9,src/game/fx_particle_system_bulk.cpp,matched,default constructor sets vtable pointer
 ??1EmissionVelocityInfo@FXParticleSystem@@UAE@XZ,0x0003CF47,0x005BD810,7,src/game/fx_particle_system.cpp,matched,destructor resets vtable pointer
@@ -623,7 +627,9 @@ name,export_rva,target_rva,target_size,source,status,notes
 ??0CylinderEmissionVolumeInfo@FXParticleSystem@@QAE@ABV01@@Z,0x0004556B,0x005D6430,57,src/game/fx_particle_system.cpp,matched,
 ??0SphereEmissionVolumeInfo@FXParticleSystem@@QAE@ABV01@@Z,0x00032CD1,0x005D6150,33,src/game/fx_particle_system_bulk.cpp,matched,
 ??0ButterflyDrawModuleTemplate@FXParticleSystem@@QAE@ABV01@@Z,0x00019CB3,0x005D8CF0,62,src/game/fx_particle_system_bulk.cpp,matched,
+??0ButterflyDrawModuleTemplate@FXParticleSystem@@QAE@XZ,0x0003E8F1,0x005D8C20,106,src/game/fx_particle_system_bulk.cpp,matched,
 ??0QuadDrawModuleTemplate@FXParticleSystem@@QAE@ABV01@@Z,0x00005222,0x005D8A40,62,src/game/fx_particle_system_bulk.cpp,matched,
+??0QuadDrawModuleTemplate@FXParticleSystem@@QAE@XZ,0x0001D278,0x005D8970,106,src/game/fx_particle_system_bulk.cpp,matched,
 ?GetName@FXParticleSystem@@YAPBDW4ModuleCategory@1@@Z,0x00048B58,0x005D4510,12,src/game/fx_particle_system.cpp,matched,returns name for module category
 ??0Keyframe@FXParticleSystem@@QAE@XZ,0x0002F21B,0x0005C6C0,16,src/game/fx_particle_system.cpp,matched,default constructor zeroes frame and value
 ??0SphereEmissionVolumeInfo@FXParticleSystem@@QAE@XZ,0x0004B2AE,0x005D6120,17,src/game/fx_particle_system.cpp,matched,default constructor initializes base and radius
@@ -1004,3 +1010,14 @@ name,export_rva,target_rva,target_size,source,status,notes
 ??1OrthoEmissionVelocityInfo@FXParticleSystem@@UAE@XZ,0x000346BC,0x005D6D90,7,src/game/fx_particle_system.cpp,matched,empty dtor resets to EmissionVelocityInfo vtable
 ??1OutwardEmissionVelocityInfo@FXParticleSystem@@UAE@XZ,0x000206CB,0x005D7B10,7,src/game/fx_particle_system.cpp,matched,empty dtor resets to EmissionVelocityInfo vtable
 ??1SphericalEmissionVelocityInfo@FXParticleSystem@@UAE@XZ,0x0001BFDB,0x005D71D0,7,src/game/fx_particle_system.cpp,matched,empty dtor resets to EmissionVelocityInfo vtable
+??0LineEmissionVolumeInfo@FXParticleSystem@@QAE@ABV01@@Z,0x0003E0EA,0x005D5A90,63,src/game/fx_particle_system.cpp,matched,
+??0BoxEmissionVolumeModuleTemplate@FXParticleSystem@@QAE@ABV01@@Z,0x0002D402,0x005D5FC0,98,src/game/fx_particle_system.cpp,matched,
+??0CylinderEmissionVolumeModuleTemplate@FXParticleSystem@@QAE@ABV01@@Z,0x000237EF,0x005D65F0,110,src/game/fx_particle_system.cpp,matched,
+??0LineEmissionVolumeModuleTemplate@FXParticleSystem@@QAE@ABV01@@Z,0x00004269,0x005D5C60,116,src/game/fx_particle_system.cpp,matched,
+??0BoxEmissionVolumeModuleTemplate@FXParticleSystem@@QAE@XZ,0x00048A72,0x005D5F40,51,src/game/fx_particle_system_bulk.cpp,matched,
+??0CylinderEmissionVolumeModuleTemplate@FXParticleSystem@@QAE@XZ,0x000034E5,0x005D6560,57,src/game/fx_particle_system_bulk.cpp,matched,
+??0LineEmissionVolumeModuleTemplate@FXParticleSystem@@QAE@XZ,0x00045075,0x005D5BD0,60,src/game/fx_particle_system_bulk.cpp,matched,
+??0PointEmissionVolumeModuleTemplate@FXParticleSystem@@QAE@XZ,0x0003160B,0x005D58B0,41,src/game/fx_particle_system_bulk.cpp,matched,
+??0SphereEmissionVolumeModuleTemplate@FXParticleSystem@@QAE@XZ,0x0003A4D1,0x005D6240,45,src/game/fx_particle_system_bulk.cpp,matched,
+??0PointEmissionVolumeModuleTemplate@FXParticleSystem@@QAE@ABV01@@Z,0x0000FECA,0x005D5930,62,src/game/fx_particle_system_bulk.cpp,matched,
+??0SphereEmissionVolumeModuleTemplate@FXParticleSystem@@QAE@ABV01@@Z,0x0001598D,0x005D62C0,62,src/game/fx_particle_system_bulk.cpp,matched,

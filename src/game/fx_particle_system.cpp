@@ -217,44 +217,6 @@ __declspec(naked) Keyframe::Keyframe()
     }
 }
 
-SphereEmissionVolumeInfo::SphereEmissionVolumeInfo()
-{
-    m_flag = false;
-    *(void **)this = (void *)0x01110A0C;
-    m_radius = 0.0f;
-}
-
-BoxEmissionVolumeInfo::BoxEmissionVolumeInfo()
-{
-    m_flag = false;
-    *(void **)this = (void *)0x011109CC;
-    m_unk[0] = 0.0f;
-    m_unk[1] = 0.0f;
-    m_unk[2] = 0.0f;
-}
-
-CylinderEmissionVolumeInfo::CylinderEmissionVolumeInfo()
-{
-    m_flag = false;
-    *(void **)this = (void *)0x01110A4C;
-    m_unk[0] = 0.0f;
-    m_unk[1] = 0.0f;
-    m_unk[2] = 0.0f;
-    m_unk[3] = 0.0f;
-    m_unk[4] = 0.0f;
-}
-
-LineEmissionVolumeInfo::LineEmissionVolumeInfo()
-{
-    m_flag = false;
-    *(void **)this = (void *)0x0111098C;
-    m_unk[0] = 0.0f;
-    m_unk[1] = 0.0f;
-    m_unk[2] = 0.0f;
-    m_unk[3] = 0.0f;
-    m_unk[4] = 0.0f;
-    m_unk[5] = 0.0f;
-}
 
 template <int Category, int SubCategory = 1>
 class CategoryModuleClassBase {
@@ -279,43 +241,19 @@ void CategoryModuleInfo<Category>::unusedVirtual()
 }
 
 template <int Category>
-CategoryModuleInfo<Category>::CategoryModuleInfo()
-{
-}
-
-template <int Category>
 CategoryModuleInfo<Category>::CategoryModuleInfo(const CategoryModuleInfo<Category> &that)
 {
 }
 
 template <int Category>
-CategoryModuleTemplateBase<Category>::CategoryModuleTemplateBase()
-{
-}
-
-template <int Category>
-__declspec(noinline) CategoryModuleTemplateBase<Category>::CategoryModuleTemplateBase(const CategoryModuleTemplateBase<Category> &that)
-{
-}
-
-template <int Category>
-CategoryModuleTemplateBase<Category>::~CategoryModuleTemplateBase()
-{
-}
-
-template <int Category>
-CategoryModuleTemplate<Category>::CategoryModuleTemplate()
+CategoryModuleTemplateBase<Category>::CategoryModuleTemplateBase(const CategoryModuleTemplateBase<Category> &that)
+    : ModuleTemplate(that), CategoryModuleInfo<Category>(that)
 {
 }
 
 template <int Category>
 CategoryModuleTemplate<Category>::CategoryModuleTemplate(const CategoryModuleTemplate<Category> &that)
     : CategoryModuleTemplateBase<Category>(that)
-{
-}
-
-template <int Category>
-CategoryModuleTemplate<Category>::~CategoryModuleTemplate()
 {
 }
 
@@ -333,7 +271,6 @@ template class CategoryModuleInfo<0>;
 template class CategoryModuleInfo<1>;
 template class CategoryModuleInfo<2>;
 template class CategoryModuleInfo<3>;
-template class CategoryModuleInfo<4>;
 template class CategoryModuleInfo<5>;
 template class CategoryModuleInfo<6>;
 template class CategoryModuleInfo<7>;
@@ -343,7 +280,6 @@ template class CategoryModuleTemplateBase<1>;
 template class CategoryModuleTemplateBase<2>;
 template class CategoryModuleTemplateBase<3>;
 template class CategoryModuleTemplateBase<4>;
-template class CategoryModuleTemplateBase<5>;
 template class CategoryModuleTemplateBase<6>;
 template class CategoryModuleTemplateBase<7>;
 template class CategoryModuleTemplateBase<8>;
@@ -352,7 +288,6 @@ template class CategoryModuleTemplate<1>;
 template class CategoryModuleTemplate<2>;
 template class CategoryModuleTemplate<3>;
 template class CategoryModuleTemplate<4>;
-template class CategoryModuleTemplate<5>;
 template class CategoryModuleTemplate<6>;
 template class CategoryModuleTemplate<7>;
 template class CategoryModuleTemplate<8>;
@@ -611,32 +546,6 @@ __declspec(naked) LineEmissionVolumeInfo &LineEmissionVolumeInfo::operator=(cons
     }
 }
 
-ModuleTemplate &ModuleTemplate::operator=(const ModuleTemplate &that)
-{
-    return *this;
-}
-
-ModuleTemplate::ModuleTemplate()
-{
-}
-
-ModuleTemplate::ModuleTemplate(const ModuleTemplate &that)
-{
-}
-
-ModuleTemplate::~ModuleTemplate()
-{
-}
-
-RandomAlphaKeyframe::RandomAlphaKeyframe()
-{
-    var.setRange(0.0f, 0.0f, GameClientRandomVariable::UNIFORM);
-    frame = 0;
-}
-
-ButterflyDrawModuleInfo::~ButterflyDrawModuleInfo()
-{
-}
 
 const char *ButterflyDrawModuleInfo::GetSnapshotName()
 {
@@ -960,14 +869,9 @@ const char *EmissionVelocityInfo::GetSnapshotName()
     return "EmissionVelocityInfo";
 }
 
-EmissionVolumeInfo::EmissionVolumeInfo()
-{
-    m_flag = false;
-}
-
 EmissionVolumeInfo::EmissionVolumeInfo(const EmissionVolumeInfo &that)
+    : m_flag(that.m_flag)
 {
-    m_flag = that.m_flag;
 }
 
 BoxEmissionVolumeInfo::BoxEmissionVolumeInfo(const BoxEmissionVolumeInfo &that)
@@ -987,6 +891,34 @@ CylinderEmissionVolumeInfo::CylinderEmissionVolumeInfo(const CylinderEmissionVol
     m_unk[3] = that.m_unk[3];
     m_unk[4] = that.m_unk[4];
 }
+
+LineEmissionVolumeInfo::LineEmissionVolumeInfo(const LineEmissionVolumeInfo &that)
+    : EmissionVolumeInfo(that)
+{
+    m_unk[0] = that.m_unk[0];
+    m_unk[1] = that.m_unk[1];
+    m_unk[2] = that.m_unk[2];
+    m_unk[3] = that.m_unk[3];
+    m_unk[4] = that.m_unk[4];
+    m_unk[5] = that.m_unk[5];
+}
+
+SphereEmissionVolumeInfo::SphereEmissionVolumeInfo(const SphereEmissionVolumeInfo &that)
+    : EmissionVolumeInfo(that)
+    , m_radius(that.m_radius)
+{}
+
+BoxEmissionVolumeModuleTemplate::BoxEmissionVolumeModuleTemplate(const BoxEmissionVolumeModuleTemplate &that)
+    : CategoryModuleTemplate<5>(that), BoxEmissionVolumeInfo(that)
+{}
+
+CylinderEmissionVolumeModuleTemplate::CylinderEmissionVolumeModuleTemplate(const CylinderEmissionVolumeModuleTemplate &that)
+    : CategoryModuleTemplate<5>(that), CylinderEmissionVolumeInfo(that)
+{}
+
+LineEmissionVolumeModuleTemplate::LineEmissionVolumeModuleTemplate(const LineEmissionVolumeModuleTemplate &that)
+    : CategoryModuleTemplate<5>(that), LineEmissionVolumeInfo(that)
+{}
 
 EmissionVolumeInfo::~EmissionVolumeInfo()
 {
@@ -1017,10 +949,6 @@ const char *ParticleSystemInfo::GetSnapshotName()
 }
 
 QuadDrawModuleInfo::QuadDrawModuleInfo()
-{
-}
-
-QuadDrawModuleInfo::~QuadDrawModuleInfo()
 {
 }
 

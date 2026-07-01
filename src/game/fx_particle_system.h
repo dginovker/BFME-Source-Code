@@ -3,6 +3,8 @@
 #include "ascii_string.h"
 #include "game_client_random_variable.h"
 #include "xfer.h"
+#include "../math/color.h"
+#include "snapshot.h"
 
 struct Region2D;
 class AssetList;
@@ -19,7 +21,11 @@ namespace FXParticleSystem {
 class ParticleSystem;
 
 struct RandomAlphaKeyframe {
-    RandomAlphaKeyframe();
+    RandomAlphaKeyframe()
+    {
+        var.setRange(0.0f, 0.0f, GameClientRandomVariable::UNIFORM);
+        frame = 0.0f;
+    }
 
     GameClientRandomVariable var;
     float frame;
@@ -171,11 +177,11 @@ public:
     ModuleTag &operator=(const ModuleTag &that) { return *this; }
 };
 
-class ButterflyDrawModuleInfo {
+class ButterflyDrawModuleInfo : public Snapshot {
 public:
     ButterflyDrawModuleInfo();
     __declspec(nothrow) ButterflyDrawModuleInfo(const ButterflyDrawModuleInfo &that);
-    virtual ~ButterflyDrawModuleInfo();
+    virtual ~ButterflyDrawModuleInfo() {}
     virtual const char *GetSnapshotName();
     virtual void LoadPostProcess();
     virtual void DoXfer(Xfer &xfer);
@@ -186,24 +192,27 @@ public:
 class DefaultAlphaModuleInfo {
 public:
     DefaultAlphaModuleInfo();
-    DefaultAlphaModuleInfo(const DefaultAlphaModuleInfo &that);
     virtual ~DefaultAlphaModuleInfo();
     virtual const char *GetSnapshotName();
     virtual void LoadPostProcess();
     virtual void DoXfer(Xfer &xfer);
     DefaultAlphaModuleInfo &operator=(const DefaultAlphaModuleInfo &that);
+
+    RandomAlphaKeyframe m_alphaKey[8];
 };
 
 class DefaultColorModuleInfo {
 public:
     DefaultColorModuleInfo();
-    DefaultColorModuleInfo(const DefaultColorModuleInfo &that);
     virtual ~DefaultColorModuleInfo();
     virtual const char *GetSnapshotName();
     virtual void LoadPostProcess();
     virtual void DoXfer(Xfer &xfer);
     DefaultColorModuleInfo &operator=(const DefaultColorModuleInfo &that);
     void tintAllColors(int tint);
+
+    RGBColorKeyframe m_colorKey[8];
+    GameClientRandomVariable m_colorScale;
 };
 
 class DefaultDrawModuleInfo {
@@ -315,9 +324,9 @@ private:
     bool m_unk1;
 };
 
-class EmissionVolumeInfo {
+class EmissionVolumeInfo : public Snapshot {
 public:
-    EmissionVolumeInfo();
+    EmissionVolumeInfo() : m_flag(false) {}
     __declspec(nothrow) EmissionVolumeInfo(const EmissionVolumeInfo &that);
     virtual ~EmissionVolumeInfo();
     virtual const char *GetSnapshotName();
@@ -330,7 +339,11 @@ public:
 
 class BoxEmissionVolumeInfo : public EmissionVolumeInfo {
 public:
-    BoxEmissionVolumeInfo();
+    BoxEmissionVolumeInfo() : EmissionVolumeInfo() {
+        m_unk[0] = 0.0f;
+        m_unk[1] = 0.0f;
+        m_unk[2] = 0.0f;
+    }
     BoxEmissionVolumeInfo(const BoxEmissionVolumeInfo &that);
     virtual ~BoxEmissionVolumeInfo();
     BoxEmissionVolumeInfo &operator=(const BoxEmissionVolumeInfo &that);
@@ -341,8 +354,8 @@ private:
 
 class SphereEmissionVolumeInfo : public EmissionVolumeInfo {
 public:
-    SphereEmissionVolumeInfo();
-    SphereEmissionVolumeInfo(const SphereEmissionVolumeInfo &that);
+    SphereEmissionVolumeInfo() : EmissionVolumeInfo(), m_radius(0.0f) {}
+    __declspec(nothrow) SphereEmissionVolumeInfo(const SphereEmissionVolumeInfo &that);
     virtual ~SphereEmissionVolumeInfo();
     SphereEmissionVolumeInfo &operator=(const SphereEmissionVolumeInfo &that);
 
@@ -352,7 +365,13 @@ private:
 
 class CylinderEmissionVolumeInfo : public EmissionVolumeInfo {
 public:
-    CylinderEmissionVolumeInfo();
+    CylinderEmissionVolumeInfo() : EmissionVolumeInfo() {
+        m_unk[0] = 0.0f;
+        m_unk[1] = 0.0f;
+        m_unk[2] = 0.0f;
+        m_unk[3] = 0.0f;
+        m_unk[4] = 0.0f;
+    }
     CylinderEmissionVolumeInfo(const CylinderEmissionVolumeInfo &that);
     virtual ~CylinderEmissionVolumeInfo();
     CylinderEmissionVolumeInfo &operator=(const CylinderEmissionVolumeInfo &that);
@@ -363,7 +382,14 @@ private:
 
 class LineEmissionVolumeInfo : public EmissionVolumeInfo {
 public:
-    LineEmissionVolumeInfo();
+    LineEmissionVolumeInfo() : EmissionVolumeInfo() {
+        m_unk[0] = 0.0f;
+        m_unk[1] = 0.0f;
+        m_unk[2] = 0.0f;
+        m_unk[3] = 0.0f;
+        m_unk[4] = 0.0f;
+        m_unk[5] = 0.0f;
+    }
     LineEmissionVolumeInfo(const LineEmissionVolumeInfo &that);
     LineEmissionVolumeInfo &operator=(const LineEmissionVolumeInfo &that);
     virtual ~LineEmissionVolumeInfo();
@@ -406,11 +432,11 @@ public:
     ParticleSystemInfo &operator=(const ParticleSystemInfo &that);
 };
 
-class QuadDrawModuleInfo {
+class QuadDrawModuleInfo : public Snapshot {
 public:
     QuadDrawModuleInfo();
     __declspec(nothrow) QuadDrawModuleInfo(const QuadDrawModuleInfo &that);
-    virtual ~QuadDrawModuleInfo();
+    virtual ~QuadDrawModuleInfo() {}
     virtual const char *GetSnapshotName();
     virtual void LoadPostProcess();
     virtual void DoXfer(Xfer &xfer);
@@ -494,13 +520,46 @@ public:
 
 class ModuleTemplate {
 public:
-    ModuleTemplate();
-    ModuleTemplate(const ModuleTemplate &that);
-    virtual ~ModuleTemplate();
-    ModuleTemplate &operator=(const ModuleTemplate &that);
+    ModuleTemplate() {}
+    ModuleTemplate(const ModuleTemplate &that) {}
+    virtual ~ModuleTemplate() {}
+    ModuleTemplate &operator=(const ModuleTemplate &that) { return *this; }
 };
 
-class BoxEmissionVolumeModuleTemplate {
+// CategoryModuleInfo<N> - base for CategoryModuleTemplateBase, split across header/cpp
+template <int Category>
+class CategoryModuleInfo {
+public:
+    CategoryModuleInfo() {}
+    CategoryModuleInfo(const CategoryModuleInfo<Category> &that);
+    virtual void unusedVirtual();
+    CategoryModuleInfo<Category> &operator=(const CategoryModuleInfo<Category> &that) { return *this; }
+
+protected:
+    ~CategoryModuleInfo() { }
+};
+
+// CategoryModuleTemplateBase<N>
+template <int Category>
+class CategoryModuleTemplateBase : public ModuleTemplate, public CategoryModuleInfo<Category> {
+public:
+    CategoryModuleTemplateBase() {}
+    CategoryModuleTemplateBase(const CategoryModuleTemplateBase<Category> &that);
+    virtual ~CategoryModuleTemplateBase() {}
+    CategoryModuleTemplateBase<Category> &operator=(const CategoryModuleTemplateBase<Category> &that) { return *this; }
+};
+
+// CategoryModuleTemplate<N>
+template <int Category>
+class CategoryModuleTemplate : public CategoryModuleTemplateBase<Category> {
+public:
+    CategoryModuleTemplate() {}
+    __declspec(nothrow) CategoryModuleTemplate(const CategoryModuleTemplate<Category> &that);
+    virtual ~CategoryModuleTemplate() {}
+    CategoryModuleTemplate<Category> &operator=(const CategoryModuleTemplate<Category> &that) { return *this; }
+};
+
+class BoxEmissionVolumeModuleTemplate : public CategoryModuleTemplate<5>, public BoxEmissionVolumeInfo {
 public:
     BoxEmissionVolumeModuleTemplate();
     BoxEmissionVolumeModuleTemplate(const BoxEmissionVolumeModuleTemplate &that);
@@ -510,7 +569,7 @@ public:
     virtual void writeINI(File &file, unsigned int flags) const;
 };
 
-class CylinderEmissionVolumeModuleTemplate {
+class CylinderEmissionVolumeModuleTemplate : public CategoryModuleTemplate<5>, public CylinderEmissionVolumeInfo {
 public:
     CylinderEmissionVolumeModuleTemplate();
     CylinderEmissionVolumeModuleTemplate(const CylinderEmissionVolumeModuleTemplate &that);
@@ -571,7 +630,7 @@ public:
     virtual void writeINI(File &file, unsigned int flags) const;
 };
 
-class LineEmissionVolumeModuleTemplate {
+class LineEmissionVolumeModuleTemplate : public CategoryModuleTemplate<5>, public LineEmissionVolumeInfo {
 public:
     LineEmissionVolumeModuleTemplate();
     LineEmissionVolumeModuleTemplate(const LineEmissionVolumeModuleTemplate &that);
@@ -601,7 +660,7 @@ public:
     virtual void writeINI(File &file, unsigned int flags) const;
 };
 
-class PointEmissionVolumeModuleTemplate {
+class PointEmissionVolumeModuleTemplate : public CategoryModuleTemplate<5>, public EmissionVolumeInfo {
 public:
     PointEmissionVolumeModuleTemplate();
     PointEmissionVolumeModuleTemplate(const PointEmissionVolumeModuleTemplate &that);
@@ -631,7 +690,7 @@ public:
     virtual void writeINI(File &file, unsigned int flags) const;
 };
 
-class SphereEmissionVolumeModuleTemplate {
+class SphereEmissionVolumeModuleTemplate : public CategoryModuleTemplate<5>, public SphereEmissionVolumeInfo {
 public:
     SphereEmissionVolumeModuleTemplate();
     SphereEmissionVolumeModuleTemplate(const SphereEmissionVolumeModuleTemplate &that);
@@ -702,39 +761,6 @@ public:
     void parse(INI *ini);
     static void parseRGBColorKeyframe(INI *ini, void *data, void *store, const void *userData);
     virtual void writeINI(File &file, unsigned int flags) const;
-};
-
-// CategoryModuleInfo<N> - base for CategoryModuleTemplateBase, split across header/cpp
-template <int Category>
-class CategoryModuleInfo {
-public:
-    CategoryModuleInfo();
-    CategoryModuleInfo(const CategoryModuleInfo<Category> &that);
-    virtual void unusedVirtual();
-    CategoryModuleInfo<Category> &operator=(const CategoryModuleInfo<Category> &that) { return *this; }
-
-protected:
-    ~CategoryModuleInfo() { }
-};
-
-// CategoryModuleTemplateBase<N>
-template <int Category>
-class CategoryModuleTemplateBase : public ModuleTemplate, public CategoryModuleInfo<Category> {
-public:
-    CategoryModuleTemplateBase();
-    CategoryModuleTemplateBase(const CategoryModuleTemplateBase<Category> &that);
-    virtual ~CategoryModuleTemplateBase();
-    CategoryModuleTemplateBase<Category> &operator=(const CategoryModuleTemplateBase<Category> &that) { return *this; }
-};
-
-// CategoryModuleTemplate<N>
-template <int Category>
-class CategoryModuleTemplate : public CategoryModuleTemplateBase<Category> {
-public:
-    CategoryModuleTemplate();
-    __declspec(nothrow) CategoryModuleTemplate(const CategoryModuleTemplate<Category> &that);
-    virtual ~CategoryModuleTemplate();
-    CategoryModuleTemplate<Category> &operator=(const CategoryModuleTemplate<Category> &that) { return *this; }
 };
 
 class ButterflyDrawModuleTemplate : public CategoryModuleTemplate<6>, public ButterflyDrawModuleInfo {
