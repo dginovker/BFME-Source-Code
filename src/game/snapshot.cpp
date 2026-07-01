@@ -1,3 +1,4 @@
+#define SNAPSHOT_CPP
 #include "snapshot.h"
 
 Snapshot::Snapshot()
