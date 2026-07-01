@@ -1,5 +1,6 @@
 #include "unicode_string.h"
 #include "ascii_string.h"
+#include "string_base.h"
 
 AsciiString::AsciiString()
 {
@@ -150,15 +151,9 @@ __declspec(naked) AsciiString::AsciiString(const char *str, int len)
     }
 }
 
-__declspec(naked) AsciiString::~AsciiString()
+AsciiString::~AsciiString()
 {
-    __asm {
-        __emit 0xe9
-        __emit 0xab
-        __emit 0x8a
-        __emit 0x82
-        __emit 0x00
-    }
+    ((StringBase<char> *)this)->releaseBuffer();
 }
 
 __declspec(naked) AsciiString &AsciiString::operator=(char c)
