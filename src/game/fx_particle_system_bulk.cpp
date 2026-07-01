@@ -22558,72 +22558,10 @@ CylinderEmissionVolumeInfo &CylinderEmissionVolumeInfo::operator=(const Cylinder
 }
 
 // ??4CylinderEmissionVolumeModuleTemplate@FXParticleSystem@@QAEAAV01@ABV01@@Z
-__declspec(naked) CylinderEmissionVolumeModuleTemplate &CylinderEmissionVolumeModuleTemplate::operator=(const CylinderEmissionVolumeModuleTemplate &that)
+CylinderEmissionVolumeModuleTemplate &CylinderEmissionVolumeModuleTemplate::operator=(const CylinderEmissionVolumeModuleTemplate &that)
 {
-    __asm {
-        __emit 0x8b
-        __emit 0xc1
-        __emit 0x8b
-        __emit 0x4c
-        __emit 0x24
-        __emit 0x04
-        __emit 0x85
-        __emit 0xc9
-        __emit 0x74
-        __emit 0x05
-        __emit 0x8d
-        __emit 0x51
-        __emit 0x08
-        __emit 0xeb
-        __emit 0x02
-        __emit 0x33
-        __emit 0xd2
-        __emit 0x8a
-        __emit 0x4a
-        __emit 0x04
-        __emit 0x88
-        __emit 0x48
-        __emit 0x0c
-        __emit 0x8b
-        __emit 0x4a
-        __emit 0x08
-        __emit 0x89
-        __emit 0x48
-        __emit 0x10
-        __emit 0x8b
-        __emit 0x4a
-        __emit 0x0c
-        __emit 0x89
-        __emit 0x48
-        __emit 0x14
-        __emit 0x83
-        __emit 0xc2
-        __emit 0x10
-        __emit 0x56
-        __emit 0x8b
-        __emit 0x32
-        __emit 0x8d
-        __emit 0x48
-        __emit 0x18
-        __emit 0x89
-        __emit 0x31
-        __emit 0x8b
-        __emit 0x72
-        __emit 0x04
-        __emit 0x89
-        __emit 0x71
-        __emit 0x04
-        __emit 0x8b
-        __emit 0x52
-        __emit 0x08
-        __emit 0x89
-        __emit 0x51
-        __emit 0x08
-        __emit 0x5e
-        __emit 0xc2
-        __emit 0x04
-        __emit 0x00
-    }
+    CylinderEmissionVolumeInfo::operator=(that);
+    return *this;
 }
 
 CylindricalEmissionVelocityInfo &CylindricalEmissionVelocityInfo::operator=(const CylindricalEmissionVelocityInfo &that)
