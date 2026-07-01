@@ -5,13 +5,15 @@ ROOT="$(git rev-parse --show-toplevel)"
 cd "$ROOT"
 
 staged_sources=()
+functions_changed=0
 while IFS= read -r path; do
     case "$path" in
         src/*.cpp) staged_sources+=("$path") ;;
+        reverse/functions.csv) functions_changed=1 ;;
     esac
 done < <(git diff --cached --name-only --diff-filter=ACMRT)
 
-if [ "${#staged_sources[@]}" -eq 0 ]; then
+if [ "${#staged_sources[@]}" -eq 0 ] && [ "$functions_changed" -eq 0 ]; then
     exit 0
 fi
 
@@ -22,11 +24,22 @@ for path in "${staged_sources[@]}"; do
     fi
 done
 
+if [ "$functions_changed" -ne 0 ] && ! git diff --quiet -- reverse/functions.csv; then
+    dirty_sources+=("reverse/functions.csv")
+fi
+
 if [ "${#dirty_sources[@]}" -ne 0 ]; then
-    echo "pre-commit: staged source files also have unstaged edits; build would not verify the staged content:" >&2
+    echo "pre-commit: staged verification files also have unstaged edits; build would not verify the staged content:" >&2
     printf '  %s\n' "${dirty_sources[@]}" >&2
     exit 1
 fi
 
-python3 tools/find_declared_unmatched.py --fail --staged "${staged_sources[@]}"
-./build.sh "${staged_sources[@]}"
+if [ "${#staged_sources[@]}" -ne 0 ]; then
+    python3 tools/find_declared_unmatched.py --fail --staged "${staged_sources[@]}"
+fi
+
+if [ "$functions_changed" -ne 0 ]; then
+    ./build.sh
+elif [ "${#staged_sources[@]}" -ne 0 ]; then
+    ./build.sh "${staged_sources[@]}"
+fi
