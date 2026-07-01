@@ -39,6 +39,10 @@ Observed traps:
 Use these as negative patterns: once a diff shows one of these traps, prefer another function family
 or first find a source pattern that proves the exact instruction shape in a targeted build.
 
+One positive pattern: MSVC 7.1 groups overloaded virtual operators at the first overload slot and
+emits them in reverse declaration order. The `Debug` shim intentionally declares stream overloads
+so `float`, `int`, and `const char *` land at the target vtable slots `0x20`, `0x34`, and `0x38`.
+
 ## Reference source
 
 BFME is the SAGE engine — its original source largely survives in C&C Generals, vendored under

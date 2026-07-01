@@ -1,5 +1,6 @@
 #include "coord3d.h"
 
+#include "../game/debug.h"
 #include <math.h>
 
 Coord3DBase &Coord3DBase::operator=(const Coord3DBase &that)
@@ -825,105 +826,8 @@ Coord3D &Coord3D::Sub2D(const Coord3DBase &left, const Coord3DBase &right)
     return *this;
 }
 
-class Debug;
-
-__declspec(naked) Debug &operator<<(Debug &debug, const Coord3D &coord)
+Debug &operator<<(Debug &debug, const Coord3D &coord)
 {
-    __asm {
-        __emit 0x56
-        __emit 0x8b
-        __emit 0x74
-        __emit 0x24
-        __emit 0x08
-        __emit 0x8b
-        __emit 0x06
-        __emit 0x57
-        __emit 0x68
-        __emit 0x64
-        __emit 0xe4
-        __emit 0x0e
-        __emit 0x01
-        __emit 0x8b
-        __emit 0xce
-        __emit 0xff
-        __emit 0x50
-        __emit 0x38
-        __emit 0x8b
-        __emit 0x7c
-        __emit 0x24
-        __emit 0x10
-        __emit 0x8b
-        __emit 0x0f
-        __emit 0x8b
-        __emit 0x10
-        __emit 0x51
-        __emit 0x8b
-        __emit 0xc8
-        __emit 0xff
-        __emit 0x52
-        __emit 0x20
-        __emit 0x8b
-        __emit 0x10
-        __emit 0x68
-        __emit 0x5c
-        __emit 0xdf
-        __emit 0x09
-        __emit 0x01
-        __emit 0x8b
-        __emit 0xc8
-        __emit 0xff
-        __emit 0x52
-        __emit 0x38
-        __emit 0x8b
-        __emit 0x4f
-        __emit 0x04
-        __emit 0x8b
-        __emit 0x10
-        __emit 0x51
-        __emit 0x8b
-        __emit 0xc8
-        __emit 0xff
-        __emit 0x52
-        __emit 0x20
-        __emit 0x8b
-        __emit 0x10
-        __emit 0x68
-        __emit 0x5c
-        __emit 0xdf
-        __emit 0x09
-        __emit 0x01
-        __emit 0x8b
-        __emit 0xc8
-        __emit 0xff
-        __emit 0x52
-        __emit 0x38
-        __emit 0x8b
-        __emit 0x4f
-        __emit 0x08
-        __emit 0x8b
-        __emit 0x10
-        __emit 0x51
-        __emit 0x8b
-        __emit 0xc8
-        __emit 0xff
-        __emit 0x52
-        __emit 0x20
-        __emit 0x8b
-        __emit 0x10
-        __emit 0x68
-        __emit 0x04
-        __emit 0x28
-        __emit 0x08
-        __emit 0x01
-        __emit 0x8b
-        __emit 0xc8
-        __emit 0xff
-        __emit 0x52
-        __emit 0x38
-        __emit 0x5f
-        __emit 0x8b
-        __emit 0xc6
-        __emit 0x5e
-        __emit 0xc3
-    }
+    debug << "(" << coord.x << ", " << coord.y << ", " << coord.z << ")";
+    return debug;
 }
