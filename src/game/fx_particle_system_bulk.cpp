@@ -12194,41 +12194,9 @@ __declspec(naked) ConcreteModuleTemplate<ModuleTag<4, OUTWARD_EMISSION_VELOCITY_
 }
 
 // ?clone@?$ConcreteModuleTemplate@V?$ModuleTag@$03$E?OUTWARD_EMISSION_VELOCITY_MODULE_KEY@FXParticleSystem@@3QBDB$E?OUTWARD_EMISSION_VELOCITY_MODULE_NAME@2@3QBDBVOutwardEmissionVelocityModule@2@VOutwardEmissionVelocityModuleTemplate@2@V?$DefaultParticleModule@$03@2@V?$DefaultParticleModuleTemplate@$03@2@@FXParticleSystem@@@FXParticleSystem@@UBEPAVOutwardEmissionVelocityModuleTemplate@2@XZ
-__declspec(naked) OutwardEmissionVelocityModuleTemplate *ConcreteModuleTemplate<ModuleTag<4, OUTWARD_EMISSION_VELOCITY_MODULE_KEY, OUTWARD_EMISSION_VELOCITY_MODULE_NAME, OutwardEmissionVelocityModule, OutwardEmissionVelocityModuleTemplate, DefaultParticleModule<4>, DefaultParticleModuleTemplate<4> > >::clone() const
+OutwardEmissionVelocityModuleTemplate *ConcreteModuleTemplate<ModuleTag<4, OUTWARD_EMISSION_VELOCITY_MODULE_KEY, OUTWARD_EMISSION_VELOCITY_MODULE_NAME, OutwardEmissionVelocityModule, OutwardEmissionVelocityModuleTemplate, DefaultParticleModule<4>, DefaultParticleModuleTemplate<4> > >::clone() const
 {
-    __asm {
-        __emit 0x56
-        __emit 0x6a
-        __emit 0x24
-        __emit 0x8b
-        __emit 0xf1
-        __emit 0xe8
-        __emit 0x06
-        __emit 0x51
-        __emit 0x2a
-        __emit 0x00
-        __emit 0x83
-        __emit 0xc4
-        __emit 0x04
-        __emit 0x85
-        __emit 0xc0
-        __emit 0x74
-        __emit 0x0a
-        __emit 0x56
-        __emit 0x8b
-        __emit 0xc8
-        __emit 0xe8
-        __emit 0x4b
-        __emit 0x17
-        __emit 0xa3
-        __emit 0xff
-        __emit 0x5e
-        __emit 0xc3
-        __emit 0x33
-        __emit 0xc0
-        __emit 0x5e
-        __emit 0xc3
-    }
+    return (OutwardEmissionVelocityModuleTemplate *)new ConcreteModuleTemplate<ModuleTag<4, OUTWARD_EMISSION_VELOCITY_MODULE_KEY, OUTWARD_EMISSION_VELOCITY_MODULE_NAME, OutwardEmissionVelocityModule, OutwardEmissionVelocityModuleTemplate, DefaultParticleModule<4>, DefaultParticleModuleTemplate<4> > >(*this);
 }
 
 // ?createModule@?$ConcreteModuleTemplate@V?$ModuleTag@$03$E?OUTWARD_EMISSION_VELOCITY_MODULE_KEY@FXParticleSystem@@3QBDB$E?OUTWARD_EMISSION_VELOCITY_MODULE_NAME@2@3QBDBVOutwardEmissionVelocityModule@2@VOutwardEmissionVelocityModuleTemplate@2@V?$DefaultParticleModule@$03@2@V?$DefaultParticleModuleTemplate@$03@2@@FXParticleSystem@@@FXParticleSystem@@UAEPAVOutwardEmissionVelocityModule@2@AAV?$TrackingPtr@VParticleSystem@FXParticleSystem@@@@@Z
