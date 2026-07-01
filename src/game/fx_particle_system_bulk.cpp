@@ -24943,43 +24943,11 @@ __declspec(naked) ParticleSystemTemplate &ParticleSystemTemplate::operator=(cons
 }
 
 // ??4PointEmissionVolumeModuleTemplate@FXParticleSystem@@QAEAAV01@ABV01@@Z
-__declspec(naked) PointEmissionVolumeModuleTemplate &PointEmissionVolumeModuleTemplate::operator=(const PointEmissionVolumeModuleTemplate &that)
+PointEmissionVolumeModuleTemplate &PointEmissionVolumeModuleTemplate::operator=(const PointEmissionVolumeModuleTemplate &that)
 {
-    __asm {
-        __emit 0x8b
-        __emit 0xc1
-        __emit 0x8b
-        __emit 0x4c
-        __emit 0x24
-        __emit 0x04
-        __emit 0x85
-        __emit 0xc9
-        __emit 0x74
-        __emit 0x0c
-        __emit 0x8d
-        __emit 0x51
-        __emit 0x08
-        __emit 0x8a
-        __emit 0x4a
-        __emit 0x04
-        __emit 0x88
-        __emit 0x48
-        __emit 0x0c
-        __emit 0xc2
-        __emit 0x04
-        __emit 0x00
-        __emit 0x33
-        __emit 0xd2
-        __emit 0x8a
-        __emit 0x4a
-        __emit 0x04
-        __emit 0x88
-        __emit 0x48
-        __emit 0x0c
-        __emit 0xc2
-        __emit 0x04
-        __emit 0x00
-    }
+    const EmissionVolumeInfo *info = (&that != 0) ? (const EmissionVolumeInfo *)&that : 0;
+    m_flag = info->m_flag;
+    return *this;
 }
 
 RandomAlphaKeyframe &RandomAlphaKeyframe::operator=(const RandomAlphaKeyframe &that)
