@@ -18,7 +18,11 @@ EXPORTS = ROOT / "reverse" / "exports.csv"
 
 def main():
     with FUNCTIONS.open("r", encoding="utf-8", newline="") as handle:
-        matched = {row["name"] for row in csv.DictReader(handle)}
+        matched = {
+            row["name"]
+            for row in csv.DictReader(handle)
+            if row.get("status", "matched") == "matched"
+        }
 
     with EXPORTS.open("r", encoding="utf-8", newline="") as handle:
         exports = list(csv.DictReader(handle))
