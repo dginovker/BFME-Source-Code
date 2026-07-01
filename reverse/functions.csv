@@ -790,7 +790,6 @@ name,export_rva,target_rva,target_size,source,status,notes
 ?bringForward@WindowLayout@@UAEXXZ,,0x00497A90,41,src/game/window_layout.cpp,matched,
 ?clear@?$StringBase@D@@QAEXXZ,0x00041A38,0x000680C0,6,src/game/string_base.cpp,matched,clears string by releasing buffer
 ?clear@?$StringBase@G@@QAEXXZ,0x00024C85,0x00068090,6,src/game/string_base.cpp,matched,clears wide string by releasing buffer
-?closeWindows@GameLogic@@QAEXXZ,,0x00396950,294,src/game/game_logic_dispatch.cpp,unmatched,BFME drift from Generals: extra guarded hides + background cleanup; several callee names provisional
 ?combine@RealRange@@QAEXAAU1@@Z,0x0003A332,0x007E8240,45,src/math/region.cpp,matched,updates min/max to include another range
 ?compare@?$StringBase@D@@QBEHABV1@@Z,0x000220C5,0x0005FEB0,92,src/game/string_base.cpp,matched,
 ?compare@?$StringBase@D@@QBEHPBD@Z,0x0004B01A,0x0004B01A,10,src/game/string_base.cpp,matched,compare with C string via internal helper
