@@ -12,6 +12,9 @@
 
 #include <assert.h>
 
+#pragma warning(disable : 4530)
+#pragma inline_depth(255)
+
 #if defined(_MSC_VER)
 #define WWINLINE __forceinline
 #else

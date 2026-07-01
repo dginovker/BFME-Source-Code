@@ -12,4 +12,10 @@
 #define WWASSERT(expr)
 #define WWASSERT_PRINT(expr, string)
 
+#define W3D_DIE
+
+#define WWDEBUG_ERROR(x)
+
+#define WWDEBUG_WARNING(x)
+
 #endif

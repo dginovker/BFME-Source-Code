@@ -9,6 +9,7 @@ name,address,notes
 ?HideQuitMenu@@YAXXZ,0x0001BF36
 ?HideSaveLoadMenu@@YAXXZ,0x0000A416
 ?Inv_Sqrt@WWMath@@SIMM@Z,0x00027A43,WWMath::Inv_Sqrt (naked __fastcall) incremental-link thunk (body 0x00131C90); called by Quaternion::Normalize and Axis_To_Quat, owned by wwmath.cpp
+?Random_Float@WWMath@@SAMXZ,0x008D8E00
 ?ReleaseWindowLayout@@YAXPAVWindowLayout@@@Z,0x00049AD0
 ?ResetInGameChat@@YAXXZ,0x00033A6E
 ?addArgType@GameMessageParser@@QAEXW4GameMessageArgumentDataType@@H@Z,0x0000B569,GameMessageParser::addArgType thunk
