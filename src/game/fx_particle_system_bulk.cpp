@@ -13822,68 +13822,9 @@ __declspec(naked) ConcreteModuleTemplate<ModuleTag<5, LINE_EMISSION_VOLUME_MODUL
 }
 
 // ?clone@?$ConcreteModuleTemplate@V?$ModuleTag@$04$E?LINE_EMISSION_VOLUME_MODULE_KEY@FXParticleSystem@@3QBDB$E?LINE_EMISSION_VOLUME_MODULE_NAME@2@3QBDBVLineEmissionVolumeModule@2@VLineEmissionVolumeModuleTemplate@2@V?$DefaultParticleModule@$04@2@V?$DefaultParticleModuleTemplate@$04@2@@FXParticleSystem@@@FXParticleSystem@@UBEPAVLineEmissionVolumeModuleTemplate@2@XZ
-__declspec(naked) LineEmissionVolumeModuleTemplate *ConcreteModuleTemplate<ModuleTag<5, LINE_EMISSION_VOLUME_MODULE_KEY, LINE_EMISSION_VOLUME_MODULE_NAME, LineEmissionVolumeModule, LineEmissionVolumeModuleTemplate, DefaultParticleModule<5>, DefaultParticleModuleTemplate<5> > >::clone() const
+LineEmissionVolumeModuleTemplate *ConcreteModuleTemplate<ModuleTag<5, LINE_EMISSION_VOLUME_MODULE_KEY, LINE_EMISSION_VOLUME_MODULE_NAME, LineEmissionVolumeModule, LineEmissionVolumeModuleTemplate, DefaultParticleModule<5>, DefaultParticleModuleTemplate<5> > >::clone() const
 {
-    __asm {
-        __emit 0x56
-        __emit 0x57
-        __emit 0x6a
-        __emit 0x28
-        __emit 0x8b
-        __emit 0xf9
-        __emit 0xe8
-        __emit 0xa5
-        __emit 0x50
-        __emit 0x2a
-        __emit 0x00
-        __emit 0x8b
-        __emit 0xf0
-        __emit 0x83
-        __emit 0xc4
-        __emit 0x04
-        __emit 0x85
-        __emit 0xf6
-        __emit 0x74
-        __emit 0x21
-        __emit 0x57
-        __emit 0x8b
-        __emit 0xce
-        __emit 0xe8
-        __emit 0xcd
-        __emit 0x73
-        __emit 0xa2
-        __emit 0xff
-        __emit 0x5f
-        __emit 0xc7
-        __emit 0x06
-        __emit 0xa8
-        __emit 0x11
-        __emit 0x11
-        __emit 0x01
-        __emit 0xc7
-        __emit 0x46
-        __emit 0x04
-        __emit 0xa4
-        __emit 0x11
-        __emit 0x11
-        __emit 0x01
-        __emit 0xc7
-        __emit 0x46
-        __emit 0x08
-        __emit 0x90
-        __emit 0x11
-        __emit 0x11
-        __emit 0x01
-        __emit 0x8b
-        __emit 0xc6
-        __emit 0x5e
-        __emit 0xc3
-        __emit 0x5f
-        __emit 0x33
-        __emit 0xc0
-        __emit 0x5e
-        __emit 0xc3
-    }
+    return (LineEmissionVolumeModuleTemplate *)new ConcreteModuleTemplate<ModuleTag<5, LINE_EMISSION_VOLUME_MODULE_KEY, LINE_EMISSION_VOLUME_MODULE_NAME, LineEmissionVolumeModule, LineEmissionVolumeModuleTemplate, DefaultParticleModule<5>, DefaultParticleModuleTemplate<5> > >(*this);
 }
 
 // ?createModule@?$ConcreteModuleTemplate@V?$ModuleTag@$04$E?LINE_EMISSION_VOLUME_MODULE_KEY@FXParticleSystem@@3QBDB$E?LINE_EMISSION_VOLUME_MODULE_NAME@2@3QBDBVLineEmissionVolumeModule@2@VLineEmissionVolumeModuleTemplate@2@V?$DefaultParticleModule@$04@2@V?$DefaultParticleModuleTemplate@$04@2@@FXParticleSystem@@@FXParticleSystem@@UAEPAVLineEmissionVolumeModule@2@AAV?$TrackingPtr@VParticleSystem@FXParticleSystem@@@@@Z
