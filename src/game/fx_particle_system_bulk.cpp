@@ -23748,37 +23748,12 @@ WindModuleInfo &WindModuleInfo::operator=(const WindModuleInfo &that)
 }
 
 // ?DoXfer@ButterflyDrawModuleInfo@FXParticleSystem@@UAEXAAVXfer@@@Z
-__declspec(naked) void ButterflyDrawModuleInfo::DoXfer(Xfer &xfer)
+void ButterflyDrawModuleInfo::DoXfer(Xfer &xfer)
 {
-    __asm {
-        __emit 0x51
-        __emit 0x8b
-        __emit 0x4c
-        __emit 0x24
-        __emit 0x08
-        __emit 0xb0
-        __emit 0x01
-        __emit 0x8d
-        __emit 0x14
-        __emit 0x24
-        __emit 0x88
-        __emit 0x04
-        __emit 0x24
-        __emit 0x88
-        __emit 0x44
-        __emit 0x24
-        __emit 0x01
-        __emit 0x8b
-        __emit 0x01
-        __emit 0x52
-        __emit 0xff
-        __emit 0x50
-        __emit 0x28
-        __emit 0x59
-        __emit 0xc2
-        __emit 0x04
-        __emit 0x00
-    }
+    Xfer::Version v;
+    v.data[0] = 1;
+    v.data[1] = 1;
+    xfer == v;
 }
 
 // ?DoXfer@DefaultAlphaModuleInfo@FXParticleSystem@@UAEXAAVXfer@@@Z
@@ -23967,37 +23942,12 @@ __declspec(naked) void DefaultColorModuleInfo::DoXfer(Xfer &xfer)
 }
 
 // ?DoXfer@DefaultDrawModuleInfo@FXParticleSystem@@UAEXAAVXfer@@@Z
-__declspec(naked) void DefaultDrawModuleInfo::DoXfer(Xfer &xfer)
+void DefaultDrawModuleInfo::DoXfer(Xfer &xfer)
 {
-    __asm {
-        __emit 0x51
-        __emit 0x8b
-        __emit 0x4c
-        __emit 0x24
-        __emit 0x08
-        __emit 0xb0
-        __emit 0x01
-        __emit 0x8d
-        __emit 0x14
-        __emit 0x24
-        __emit 0x88
-        __emit 0x04
-        __emit 0x24
-        __emit 0x88
-        __emit 0x44
-        __emit 0x24
-        __emit 0x01
-        __emit 0x8b
-        __emit 0x01
-        __emit 0x52
-        __emit 0xff
-        __emit 0x50
-        __emit 0x28
-        __emit 0x59
-        __emit 0xc2
-        __emit 0x04
-        __emit 0x00
-    }
+    Xfer::Version v;
+    v.data[0] = 1;
+    v.data[1] = 1;
+    xfer == v;
 }
 
 // ?DoXfer@DefaultPhysicsModuleInfo@FXParticleSystem@@UAEXAAVXfer@@@Z
@@ -24716,37 +24666,12 @@ __declspec(naked) void ParticleSystemInfo::DoXfer(Xfer &xfer)
 }
 
 // ?DoXfer@QuadDrawModuleInfo@FXParticleSystem@@UAEXAAVXfer@@@Z
-__declspec(naked) void QuadDrawModuleInfo::DoXfer(Xfer &xfer)
+void QuadDrawModuleInfo::DoXfer(Xfer &xfer)
 {
-    __asm {
-        __emit 0x51
-        __emit 0x8b
-        __emit 0x4c
-        __emit 0x24
-        __emit 0x08
-        __emit 0xb0
-        __emit 0x01
-        __emit 0x8d
-        __emit 0x14
-        __emit 0x24
-        __emit 0x88
-        __emit 0x04
-        __emit 0x24
-        __emit 0x88
-        __emit 0x44
-        __emit 0x24
-        __emit 0x01
-        __emit 0x8b
-        __emit 0x01
-        __emit 0x52
-        __emit 0xff
-        __emit 0x50
-        __emit 0x28
-        __emit 0x59
-        __emit 0xc2
-        __emit 0x04
-        __emit 0x00
-    }
+    Xfer::Version v;
+    v.data[0] = 1;
+    v.data[1] = 1;
+    xfer == v;
 }
 
 // ?DoXfer@RenderObjectDrawModuleInfo@FXParticleSystem@@UAEXAAVXfer@@@Z
@@ -25170,37 +25095,12 @@ __declspec(naked) void RenderObjectUpdateModuleInfo::DoXfer(Xfer &xfer)
 }
 
 // ?DoXfer@StreakDrawModuleInfo@FXParticleSystem@@UAEXAAVXfer@@@Z
-__declspec(naked) void StreakDrawModuleInfo::DoXfer(Xfer &xfer)
+void StreakDrawModuleInfo::DoXfer(Xfer &xfer)
 {
-    __asm {
-        __emit 0x51
-        __emit 0x8b
-        __emit 0x4c
-        __emit 0x24
-        __emit 0x08
-        __emit 0xb0
-        __emit 0x01
-        __emit 0x8d
-        __emit 0x14
-        __emit 0x24
-        __emit 0x88
-        __emit 0x04
-        __emit 0x24
-        __emit 0x88
-        __emit 0x44
-        __emit 0x24
-        __emit 0x01
-        __emit 0x8b
-        __emit 0x01
-        __emit 0x52
-        __emit 0xff
-        __emit 0x50
-        __emit 0x28
-        __emit 0x59
-        __emit 0xc2
-        __emit 0x04
-        __emit 0x00
-    }
+    Xfer::Version v;
+    v.data[0] = 1;
+    v.data[1] = 1;
+    xfer == v;
 }
 
 // ?DoXfer@TerrainCollisionModuleInfo@FXParticleSystem@@UAEXAAVXfer@@@Z

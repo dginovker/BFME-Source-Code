@@ -188,31 +188,12 @@ Xfer &Xfer::operator==(RGBAColorInt& v)
     return *this;
 }
 
-__declspec(naked) void Xfer::Version1()
+void Xfer::Version1()
 {
-    __asm {
-        __emit 0x51
-        __emit 0xb0
-        __emit 0x01
-        __emit 0x8d
-        __emit 0x14
-        __emit 0x24
-        __emit 0x88
-        __emit 0x04
-        __emit 0x24
-        __emit 0x88
-        __emit 0x44
-        __emit 0x24
-        __emit 0x01
-        __emit 0x8b
-        __emit 0x01
-        __emit 0x52
-        __emit 0xff
-        __emit 0x50
-        __emit 0x28
-        __emit 0x59
-        __emit 0xc3
-    }
+    Version v;
+    v.data[0] = 1;
+    v.data[1] = 1;
+    *this == v;
 }
 
 __declspec(naked) Xfer &Xfer::operator==(AsciiString &as)

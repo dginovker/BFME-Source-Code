@@ -15,6 +15,7 @@ struct RealRange;
 struct RGBColor;
 struct RGBAColorReal;
 struct RGBAColorInt;
+struct XferReservedTag;
 
 class Xfer {
 public:
@@ -27,48 +28,48 @@ public:
     virtual ~Xfer();
     void Version1();
 
-    virtual bool IsLoading() const;
-    virtual bool IsStoring() const;
-    virtual bool IsCRC() const;
-    virtual bool IsLightCRC() const;
-    virtual void SkipBadBlock(Snapshot &snapshot, unsigned int size);
+    // Virtual layout reproduces the binary's Xfer vtable (base ??_7Xfer@@6B@).
+    // MSVC 7.1 groups the overloaded operator== into one contiguous block at the
+    // first overload's slot and emits the overloads in reverse declaration order,
+    // so the declaration order below is the reverse of the vtable slot order.
+    virtual bool IsLoading() const;                                 // slot 1
+    virtual bool IsStoring() const;                                 // slot 2
+    virtual bool IsCRC() const;                                     // slot 3
+    virtual bool IsLightCRC() const;                                // slot 4
+    virtual void ReservedVirtual1();                                // slot 5
+    virtual void ReservedVirtual2();                                // slot 6
+    virtual void ReservedVirtual3();                                // slot 7
+    virtual void SkipBadBlock(Snapshot &snapshot, unsigned int size); // slot 8
+    virtual Xfer &XferRawBytes(void *data, unsigned int size);      // slot 9
 
-    virtual Xfer &operator==(char &c);
-    virtual Xfer &operator==(unsigned char &c);
-    virtual Xfer &operator==(short &s);
-    virtual Xfer &operator==(unsigned short &s);
-    virtual Xfer &operator==(int &i);
-    virtual Xfer &operator==(unsigned int &i);
-    virtual Xfer &operator==(float &f);
-    virtual Xfer &operator==(__int64 &i);
-    virtual Xfer &operator==(bool &b);
-    virtual Xfer &operator==(Snapshot &snapshot);
+    // operator== overload group -> vtable slots 10..35 (reverse of this order)
+    virtual Xfer &operator==(bool &b);                              // slot 35
+    virtual Xfer &operator==(char &c);                              // slot 34
+    virtual Xfer &operator==(unsigned char &c);                     // slot 33
+    virtual Xfer &operator==(short &s);                             // slot 32
+    virtual Xfer &operator==(unsigned short &s);                    // slot 31
+    virtual Xfer &operator==(int &i);                               // slot 30
+    virtual Xfer &operator==(unsigned int &i);                      // slot 29
+    virtual Xfer &operator==(__int64 &i);                           // slot 28
+    virtual Xfer &operator==(float &f);                             // slot 27
+    virtual Xfer &operator==(AsciiString &as);                      // slot 26
+    virtual Xfer &operator==(UnicodeString &us);                    // slot 25
+    virtual Xfer &operator==(Coord3DBase &v);                       // slot 24
+    virtual Xfer &operator==(ICoord3D &v);                          // slot 23
+    virtual Xfer &operator==(Region3D &v);                          // slot 22
+    virtual Xfer &operator==(IRegion3D &v);                         // slot 21
+    virtual Xfer &operator==(Coord2D &v);                           // slot 20
+    virtual Xfer &operator==(ICoord2D &v);                          // slot 19
+    virtual Xfer &operator==(Region2D &v);                          // slot 18
+    virtual Xfer &operator==(IRegion2D &v);                         // slot 17
+    virtual Xfer &operator==(RealRange &v);                         // slot 16
+    virtual Xfer &operator==(RGBColor &v);                          // slot 15
+    virtual Xfer &operator==(RGBAColorReal &v);                     // slot 14
+    virtual Xfer &operator==(RGBAColorInt &v);                      // slot 13
+    virtual Xfer &operator==(Snapshot &snapshot);                   // slot 12
+    virtual Xfer &operator==(XferReservedTag &r);                   // slot 11 (reserved overload)
+    virtual Xfer &operator==(Version &v);                           // slot 10
 
-    virtual Xfer &operator==(Coord3DBase &v);
-    virtual Xfer &operator==(ICoord3D &v);
-    virtual Xfer &operator==(Region3D &v);
-    virtual Xfer &operator==(IRegion3D &v);
-    virtual Xfer &operator==(Coord2D &v);
-    virtual Xfer &operator==(ICoord2D &v);
-    virtual Xfer &operator==(Region2D &v);
-    virtual Xfer &operator==(IRegion2D &v);
-    virtual Xfer &operator==(RealRange &v);
-    virtual Xfer &operator==(RGBColor &v);
-    virtual Xfer &operator==(RGBAColorReal &v);
-    virtual Xfer &operator==(RGBAColorInt &v);
-
-    virtual Xfer &operator==(AsciiString &as);
-    virtual Xfer &operator==(UnicodeString &us);
-    virtual Xfer &operator==(Version &v);
-
-private:
-    virtual void ReservedVirtual1();
-    virtual void ReservedVirtual2();
-    virtual void ReservedVirtual3();
-    virtual void ReservedVirtual4();
-    virtual void ReservedVirtual5();
-
-public:
-    virtual Xfer &XferRawBytes(void *data, unsigned int size);
-    virtual Xfer &XferEnum(const char *name, void *data, unsigned int size);
+    virtual void ReservedVirtual4();                                // slot 36
+    virtual Xfer &XferEnum(const char *name, void *data, unsigned int size); // slot 37
 };

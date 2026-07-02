@@ -779,8 +779,8 @@ name,export_rva,target_rva,target_size,source,status,notes
 ?Build_Quaternion@@YA?AVQuaternion@@ABVMatrix4@@@Z,,0x008DBCD0,311,src/w3d/quat.cpp,matched,
 ?CRC_Memory@@YAKPBEKK@Z,,0x009E7F90,53,src/w3d/realcrc.cpp,matched,realcrc TU linked twice
 ?CRC_Memory@@YAKPBEKK@Z,,0x009E19C0,53,src/w3d/realcrc.cpp,matched,realcrc TU linked twice
-?CRC_String@@YAKPBDK@Z,,0x009E7FD0,64,src/w3d/realcrc.cpp,matched,realcrc TU linked twice
 ?CRC_String@@YAKPBDK@Z,,0x009E1A00,64,src/w3d/realcrc.cpp,matched,realcrc TU linked twice
+?CRC_String@@YAKPBDK@Z,,0x009E7FD0,64,src/w3d/realcrc.cpp,matched,realcrc TU linked twice
 ?CRC_Stringi@@YAKPBDK@Z,,0x009E1A40,76,src/w3d/realcrc.cpp,matched,
 ?Cached_Slerp@@YA?AVQuaternion@@ABV1@0MPAUSlerpInfoStruct@@@Z,,0x008DB8A0,224,src/w3d/quat.cpp,matched,
 ?Cached_Slerp@@YAXABVQuaternion@@0MPAUSlerpInfoStruct@@PAV1@@Z,,0x008DB980,190,src/w3d/quat.cpp,matched,
