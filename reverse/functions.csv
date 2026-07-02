@@ -377,8 +377,8 @@ name,export_rva,target_rva,target_size,source,status,notes
 ??1?$IndexClass@HPAUINISection@@@@QAE@XZ,,0x009E2D60,32,src/w3d/ini.cpp,matched,IndexClass sibling
 ??1?$Node@PAUINIEntry@@@@UAE@XZ,,0x009E3070,47,src/w3d/ini.cpp,matched,sibling
 ??1?$Node@PAUINISection@@@@UAE@XZ,,0x009E30E0,47,src/w3d/ini.cpp,matched,sibling
-??1?$StringBase@D@@AAE@XZ,0x00004A34,0x0005E490,6,src/game/string_base.cpp,matched,destroy char string base
-??1?$StringBase@G@@AAE@XZ,0x000160F9,0x0005E4E0,6,src/game/string_base.cpp,matched,destroy wide string base
+??1?$StringBase@D@@AAE@XZ,0x00004A34,0x0005E490,5,src/game/string_base.cpp,matched,destroy char string base; size trimmed: trailing int3 padding
+??1?$StringBase@G@@AAE@XZ,0x000160F9,0x0005E4E0,5,src/game/string_base.cpp,matched,destroy wide string base; size trimmed: trailing int3 padding
 ??1AsciiString@@QAE@XZ,0x0000D828,0x0005EE90,5,src/game/ascii_string.cpp,matched,AsciiString destructor
 ??1BoxEmissionVolumeInfo@FXParticleSystem@@UAE@XZ,0x0002BFF3,0x005D5E20,7,src/game/fx_particle_system.cpp,matched,resets vtable pointer
 ??1Buffer@@QAE@XZ,,0x009E1E30,40,src/w3d/buff.cpp,matched,
@@ -1263,8 +1263,8 @@ name,export_rva,target_rva,target_size,source,status,notes
 ?bringForward@WindowLayout@@UAEXXZ,,0x00497A90,41,src/game/window_layout.cpp,matched,
 ?buildTransformMatrix@Matrix3D@@QAEXABVVector3@@0@Z,,0x008D6BC0,401,src/w3d/matrix3d.cpp,matched,
 ?clamp_indices_to_grid@GridCullSystemClass@@IAEXPAH00@Z,,0x008DCE70,82,src/w3d/gridcull.cpp,matched,
-?clear@?$StringBase@D@@QAEXXZ,0x00041A38,0x000680C0,6,src/game/string_base.cpp,matched,clears string by releasing buffer
-?clear@?$StringBase@G@@QAEXXZ,0x00024C85,0x00068090,6,src/game/string_base.cpp,matched,clears wide string by releasing buffer
+?clear@?$StringBase@D@@QAEXXZ,0x00041A38,0x000680C0,5,src/game/string_base.cpp,matched,clears string by releasing buffer; size trimmed: trailing int3 padding
+?clear@?$StringBase@G@@QAEXXZ,0x00024C85,0x00068090,5,src/game/string_base.cpp,matched,clears wide string by releasing buffer; size trimmed: trailing int3 padding
 ?collect_objects_in_leaf@GridCullSystemClass@@IAEXABVAABoxClass@@PAVCullableClass@@@Z,,0x008DDD60,188,src/w3d/gridcull.cpp,matched,
 ?collect_objects_in_leaf@GridCullSystemClass@@IAEXABVFrustumClass@@PAVCullableClass@@@Z,,0x008DDE60,63,src/w3d/gridcull.cpp,matched,
 ?collect_objects_in_leaf@GridCullSystemClass@@IAEXABVOBBoxClass@@PAVCullableClass@@@Z,,0x008DDE20,63,src/w3d/gridcull.cpp,matched,
@@ -1450,8 +1450,8 @@ name,export_rva,target_rva,target_size,source,status,notes
 ?isNone@?$StringBase@G@@QBE_NXZ,0x00888A80,0x00888A80,16,src/game/string_base.cpp,matched,returns true if wide string equals the global none string
 ?isNotEmpty@?$StringBase@D@@QBE_NXZ,0x0002D5C4,0x0005E510,38,src/game/string_base.cpp,matched,returns true if non-null and non-empty
 ?isNotEmpty@?$StringBase@G@@QBE_NXZ,0x00038663,0x0052D3E0,38,src/game/string_base.cpp,matched,returns true if non-null and non-empty
-?isNotNone@?$StringBase@D@@QBE_NXZ,0x00888AE0,0x00888AE0,32,src/game/string_base.cpp,matched,returns true if string is not the global none string
-?isNotNone@?$StringBase@G@@QBE_NXZ,0x00888B30,0x00888B30,32,src/game/string_base.cpp,matched,returns true if wide string is not the global none string
+?isNotNone@?$StringBase@D@@QBE_NXZ,0x00888AE0,0x00888AE0,17,src/game/string_base.cpp,matched,returns true if string is not the global none string; size trimmed: trailing int3 padding
+?isNotNone@?$StringBase@G@@QBE_NXZ,0x00888B30,0x00888B30,17,src/game/string_base.cpp,matched,returns true if wide string is not the global none string; size trimmed: trailing int3 padding
 ?length@Coord2D@@QBEMXZ,0x0003CA3D,0x000FB9E0,22,src/math/coord2d.cpp,matched,returns vector length
 ?length@Coord3D@@QBEMXZ,0x0002FE0F,0x000B6CA0,33,src/math/coord3d.cpp,matched,returns vector length
 ?length@ICoord3D@@QBEHXZ,0x0002E83E,0x007E6DC0,47,src/math/icoord.cpp,matched,returns integer vector length
@@ -1534,12 +1534,12 @@ name,export_rva,target_rva,target_size,source,status,notes
 ?search_compfunc@?$IndexClass@HPAUINISection@@@@CAHPBX0@Z,,0x009E23C0,33,src/w3d/ini.cpp,matched,IndexClass sibling
 ?set@?$StringBase@D@@QAEXABV1@@Z,0x00887C90,0x887c90,135,src/game/string_base.cpp,matched,
 ?set@?$StringBase@D@@QAEXABV1@HH@Z,0x00888C10,0x888c10,143,src/game/string_base.cpp,matched,
-?set@?$StringBase@D@@QAEXD@Z,0x000462CC,0x00570860,16,src/game/string_base.cpp,matched,set from single char
+?set@?$StringBase@D@@QAEXD@Z,0x000462CC,0x00570860,15,src/game/string_base.cpp,matched,set from single char; size trimmed: trailing int3 padding
 ?set@?$StringBase@D@@QAEXPBD@Z,0x0000AD53,0x00061BF0,50,src/game/string_base.cpp,matched,set from C string
 ?set@?$StringBase@D@@QAEXPBDH@Z,0x00887D20,0x887d20,50,src/game/string_base.cpp,matched,
 ?set@?$StringBase@G@@QAEXABV1@@Z,0x00888530,0x888530,135,src/game/string_base.cpp,matched,
 ?set@?$StringBase@G@@QAEXABV1@HH@Z,0x00888E40,0x888e40,144,src/game/string_base.cpp,matched,
-?set@?$StringBase@G@@QAEXG@Z,0x0000434F,0x00564FB0,16,src/game/string_base.cpp,matched,set wide string from single wchar_t
+?set@?$StringBase@G@@QAEXG@Z,0x0000434F,0x00564FB0,15,src/game/string_base.cpp,matched,set wide string from single wchar_t; size trimmed: trailing int3 padding
 ?set@?$StringBase@G@@QAEXPBG@Z,0x0003517A,0x00083470,52,src/game/string_base.cpp,matched,set from wide C string
 ?set@?$StringBase@G@@QAEXPBGH@Z,0x008885C0,0x8885c0,50,src/game/string_base.cpp,matched,
 ?set@Coord3D@@QAEXMMM@Z,0x00005F0B,0x000FB9C0,23,src/math/coord3d.cpp,matched,sets x/y/z from floats

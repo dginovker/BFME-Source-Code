@@ -51,63 +51,6 @@ const T *StringBase<T>::str() const
     return m_data ? &m_data->data[0] : (const T *)"";
 }
 
-extern "C" void _stringbase_isnotnone_cmp_char();
-extern "C" void _stringbase_isnotnone_cmp_wchar();
-
-__declspec(naked) bool StringBase<char>::isNotNone() const
-{
-    __asm {
-        push 0x01133008
-        call _stringbase_isnotnone_cmp_char
-        neg eax
-        sbb eax, eax
-        neg eax
-        ret
-        __emit 0xcc
-        __emit 0xcc
-        __emit 0xcc
-        __emit 0xcc
-        __emit 0xcc
-        __emit 0xcc
-        __emit 0xcc
-        __emit 0xcc
-        __emit 0xcc
-        __emit 0xcc
-        __emit 0xcc
-        __emit 0xcc
-        __emit 0xcc
-        __emit 0xcc
-        __emit 0xcc
-    }
-}
-
-__declspec(naked) bool StringBase<wchar_t>::isNotNone() const
-{
-    __asm {
-        push 0x0113301c
-        call _stringbase_isnotnone_cmp_wchar
-        neg eax
-        sbb eax, eax
-        neg eax
-        ret
-        __emit 0xcc
-        __emit 0xcc
-        __emit 0xcc
-        __emit 0xcc
-        __emit 0xcc
-        __emit 0xcc
-        __emit 0xcc
-        __emit 0xcc
-        __emit 0xcc
-        __emit 0xcc
-        __emit 0xcc
-        __emit 0xcc
-        __emit 0xcc
-        __emit 0xcc
-        __emit 0xcc
-    }
-}
-
 template <typename T>
 const T *StringBase<T>::find(T c) const
 {
@@ -153,30 +96,6 @@ __declspec(naked) int StringBase<char>::compare(const char *str) const
         __emit 0x9a
         __emit 0x0f
         __emit 0x00
-    }
-}
-
-__declspec(naked) StringBase<char>::~StringBase()
-{
-    __asm {
-        __emit 0xe9
-        __emit 0xab
-        __emit 0x94
-        __emit 0x82
-        __emit 0x00
-        __emit 0xcc
-    }
-}
-
-__declspec(naked) StringBase<wchar_t>::~StringBase()
-{
-    __asm {
-        __emit 0xe9
-        __emit 0xeb
-        __emit 0x9c
-        __emit 0x82
-        __emit 0x00
-        __emit 0xcc
     }
 }
 
@@ -289,50 +208,6 @@ __declspec(naked) bool StringBase<char>::startsWithNoCase(const StringBase<char>
         __emit 0xc2
         __emit 0x04
         __emit 0x00
-    }
-}
-
-__declspec(naked) void StringBase<char>::set(char c)
-{
-    __asm {
-        __emit 0x6a
-        __emit 0x01
-        __emit 0x8d
-        __emit 0x44
-        __emit 0x24
-        __emit 0x08
-        __emit 0x50
-        __emit 0xe8
-        __emit 0xb4
-        __emit 0x74
-        __emit 0x31
-        __emit 0x00
-        __emit 0xc2
-        __emit 0x04
-        __emit 0x00
-        __emit 0xcc
-    }
-}
-
-__declspec(naked) void StringBase<wchar_t>::set(wchar_t c)
-{
-    __asm {
-        __emit 0x6a
-        __emit 0x01
-        __emit 0x8d
-        __emit 0x44
-        __emit 0x24
-        __emit 0x08
-        __emit 0x50
-        __emit 0xe8
-        __emit 0x04
-        __emit 0x36
-        __emit 0x32
-        __emit 0x00
-        __emit 0xc2
-        __emit 0x04
-        __emit 0x00
-        __emit 0xcc
     }
 }
 
@@ -8113,6 +7988,30 @@ void StringBase<T>::format_va(const StringBase<T> &fmt, char *args)
     format_va(fmt.str(), args);
 }
 
+template <typename T>
+void StringBase<T>::clear()
+{
+    releaseBuffer();
+}
+
+template <typename T>
+StringBase<T>::~StringBase()
+{
+    releaseBuffer();
+}
+
+template <typename T>
+bool StringBase<T>::isNotNone() const
+{
+    return compareNoCase(sizeof(T) == 1 ? (const T *)"None" : (const T *)L"None") != 0;
+}
+
+template <typename T>
+void StringBase<T>::set(T c)
+{
+    set(&c, 1);
+}
+
 template class StringBase<char>;
 template class StringBase<wchar_t>;
 
@@ -8211,30 +8110,6 @@ __declspec(naked) Debug &operator<<(Debug &debug, const StringBase<char> &str)
         __emit 0xc6
         __emit 0x5e
         __emit 0xc3
-    }
-}
-
-__declspec(naked) void StringBase<char>::clear()
-{
-    __asm {
-        __emit 0xe9
-        __emit 0x7b
-        __emit 0xf8
-        __emit 0x81
-        __emit 0x00
-        __emit 0xcc
-    }
-}
-
-__declspec(naked) void StringBase<wchar_t>::clear()
-{
-    __asm {
-        __emit 0xe9
-        __emit 0x3b
-        __emit 0x01
-        __emit 0x82
-        __emit 0x00
-        __emit 0xcc
     }
 }
 
