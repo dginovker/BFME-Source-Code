@@ -815,6 +815,7 @@ name,export_rva,target_rva,target_size,source,status,notes
 ?Init@AABoxClass@@QAEXABVVector3@@0@Z,,0x00725F00,44,src/w3d/cullsys.cpp,matched,
 ?Init@BTCollisionStruct@@QAEXABVAABoxClass@@ABVVector3@@ABVTriClass@@1@Z,,0x008DF290,353,src/w3d/colmathaabtri.cpp,matched,
 ?Init@Matrix4@@QAEXABVMatrix3D@@@Z,,0x006CA420,95,src/w3d/matrix3d.cpp,matched,
+?Init@WWMath@@SAXXZ,,0x008D8E90,157,src/w3d/wwmath.cpp,matched,BFME drift: no LookupTableMgrClass::Init() call
 ?Intersection_Test@CollisionMath@@SA_NABVAABoxClass@@0@Z,,0x008D99E0,149,src/w3d/colmathaabox.cpp,matched,
 ?Intersection_Test@CollisionMath@@SA_NABVAABoxClass@@ABVOBBoxClass@@@Z,,0x008E36B0,165,src/w3d/colmathobbobb.cpp,matched,
 ?Intersection_Test@CollisionMath@@SA_NABVAABoxClass@@ABVTriClass@@@Z,,0x008DF760,2450,src/w3d/colmathaabtri.cpp,matched,locate ambiguous Vector3 callees; build.sh+explain_mismatch exact match
@@ -906,6 +907,7 @@ name,export_rva,target_rva,target_size,source,status,notes
 ?Project_To_Axis@OBBoxClass@@QBEMABVVector3@@@Z,,0x008E2330,190,src/w3d/obbox.cpp,matched,
 ?Quick_Distance@Vector3@@SAMABV1@0@Z,,0x003D53F0,190,src/w3d/vector3.cpp,matched,
 ?Quick_Length@Vector3@@QBEMXZ,,0x003D5320,161,src/w3d/vector3.cpp,matched,
+?Random_Float@WWMath@@SAMXZ,,0x008D8E00,26,src/w3d/wwmath.cpp,matched,
 ?Raw_Seek@RawFileClass@@IAEHHH@Z,,0x009E6910,115,src/w3d/rawfile.cpp,matched,
 ?Re_Orthogonalize@Matrix3@@QAEXXZ,,0x008D96B0,525,src/w3d/matrix3.cpp,matched,
 ?Re_Orthogonalize@Matrix3D@@QAEXXZ,,0x008D8260,534,src/w3d/matrix3d.cpp,matched,
@@ -979,6 +981,7 @@ name,export_rva,target_rva,target_size,source,status,notes
 ?Set_Size@ChunkHeader@@QAEXK@Z,,0x009E11F0,23,src/w3d/chunkio.cpp,matched,
 ?Set_Sub_Chunk_Flag@ChunkHeader@@QAEX_N@Z,,0x009E1220,33,src/w3d/chunkio.cpp,matched,
 ?Set_Translation@Matrix3D@@QAEXABVVector3@@@Z,,0x001B47B0,24,src/w3d/matrix3d.cpp,matched,
+?Shutdown@WWMath@@SAXXZ,,0x008D8DF0,1,src/w3d/wwmath.cpp,matched,BFME drift: empty body (LookupTableMgr call dropped) -> lone ret; addr inferred from WWMath cluster adjacency to Random_Float/Init
 ?Sin@@YAMM@Z,0x00873910,0x00873910,7,src/math/trig.cpp,matched,returns sine of radians
 ?Size@RawFileClass@@UAEHXZ,,0x009E6830,118,src/w3d/rawfile.cpp,matched,
 ?SkipBadBlock@Xfer@@UAEXAAVSnapshot@@I@Z,0x00048B44,0x0006B1D0,3,src/game/xfer.cpp,matched,no-op
